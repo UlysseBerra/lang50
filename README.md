@@ -2,7 +2,7 @@
 
 ## Context
 
-The `lang50` project is a joint venture of Ulysse Berra and Aurélien Berra. It serves as our Harvard CS50x final project, as well as changing the world, one erudite joke at a time.
+The `lang50` project is a joint venture of Ulysse Berra and Aurélien Berra. It serves as our Harvard CS50x final project, as well as changing the world, one nerdy game at a time.
 
 ## Definition and Aim
 
@@ -56,53 +56,53 @@ We use the following technologies:
 
 ## Specifications
 
-- Defining features
-    - inclusion of constructed languages (on top of natural languages)
-    - providing hints to the user: specific language features to look for
-    - 5 consecutive correct answers = 1 life gets refilled out of initial 3
-    - instead of recognizing the language being spoken, the user must choose the correct transcription out of a number of script options, or vice versa
-    - possibility to exclude specific languages (e.g. native language)
-    - include different language variants? (e.g. dialects, accents)
-    - make the game a learning experience
-        - after the user answers the question, they are shown the correct script, along with the language's name. If the user chose wrong, they are also shown the name of the written language they selected.
+-   Defining features
 
-- Languages
-    - natural
-        - IE
-            - Germanic
-                - Norwegian
-                - Swedish
-                - Danish
-                - German
-                - Dutch
-                - Afrikaans
-            - Latin
-                - French
-                - Classical Latin
-                - Spanish
-                - Italian
-                - Romanian
-            - Indo-Iranian
-                - Sanskrit
-                - Farsi
-                - Hindi
-            - Hellenic
-                - Ancient Greek
-                - Modern Greek
-            - Slavic
-        - Dravidian
-        - Sino-Tibetan
-        - Congo-Niger
-        - Austronesian
-        - Uralic
-        - Afro-Asiatic
-            - Arabic
-            - Hebrew
-    - constructed
-        - Esperanto
-        - Toki Pona
-        - Klingon
-        - Quenya
-        - Sindarin
-        - Na'vi
-        - Biblardion conlangs
+    -   include constructed languages, on top of natural languages
+    -   provide hints to the user: specific language features to look for
+    -   add life refill mechanism: after 5 consecutive correct answers, 1 life gets refilled out of initial 3
+    -   foreground association of oral and written forms of the languages: instead of recognizing the language being spoken, the user must choose the correct transcription in the original script out of a number of options [to be further defined: also the reverse, i.e. see script and select audio?]
+    -   provide the option to exclude specific languages, e.g. the user's native language
+    -   include language variants: dialects, accents, historical forms [to be further defined]
+    -   make the game a learning experience: after the user answers the question, they are shown the correct script, along with the language's name; if the user chooses wrong, they are also shown the name of the written language they selected
+
+-   Languages
+    -   natural
+        -   IE
+            -   Germanic
+                -   Norwegian
+                -   Swedish
+                -   Danish
+                -   German
+                -   Dutch
+                -   Afrikaans
+            -   Latin
+                -   French
+                -   Classical Latin
+                -   Spanish
+                -   Italian
+                -   Romanian
+            -   Indo-Iranian
+                -   Sanskrit
+                -   Farsi
+                -   Hindi
+            -   Hellenic
+                -   Ancient Greek
+                -   Modern Greek
+            -   Slavic
+        -   Dravidian
+        -   Sino-Tibetan
+        -   Congo-Niger
+        -   Austronesian
+        -   Uralic
+        -   Afro-Asiatic
+            -   Arabic
+            -   Hebrew
+    -   constructed
+        -   Esperanto
+        -   Toki Pona
+        -   Klingon
+        -   Quenya
+        -   Sindarin
+        -   Na'vi
+        -   Biblardion conlangs [to be further defined]
