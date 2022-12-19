@@ -103,7 +103,7 @@ We use the following technologies:
         -   Toki Pona
         -   Klingon
         -   Quenya
-        -   Sindarin
+        -   High Valyrian
         -   Na'vi
         -   Oqolaawak
         -   Nekāchti
