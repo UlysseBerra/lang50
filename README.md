@@ -48,6 +48,8 @@ We use the following technologies:
         -   [SvelteKit Documentation](https://kit.svelte.dev/docs/introduction)
     -   ? Tailwind or Bootstrap
     -   ? unit test library
+-   Wireframing
+    -   [Figma](https://www.figma.com/)
 -   Language Resources
     -   spoken snippets: [Wikitongues](https://wikitongues.org/)
     -   scripts: ?
