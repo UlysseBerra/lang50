@@ -41,13 +41,16 @@ We use the following technologies:
     -   [Java](https://www.java.com/) + [Spring Boot](https://spring.io/)
     -   ? database
 -   Front-end
-    -   TypeScript + [Svelte](https://svelte.dev/) and [SvelteKit](https://kit.svelte.dev/)
+    -   [Svelte](https://svelte.dev/) and [SvelteKit](https://kit.svelte.dev/)
         -   [Svelte Tutorial](https://svelte.dev/tutorial/)
         -   [Svelte Documentation](https://svelte.dev/docs)
         -   [SvelteKit Introduction](https://learn.svelte.dev/tutorial/introducing-sveltekit)
         -   [SvelteKit Documentation](https://kit.svelte.dev/docs/introduction)
-    -   ? Tailwind or Bootstrap
-    -   ? unit test library
+    -   perhaps
+        -   [TypeScript](https://www.typescriptlang.org/)
+        -   [Tailwind](https://tailwindcss.com/)
+        -   [Bootstrap](https://getbootstrap.com/)
+        -   ? unit test library
 -   Wireframing
     -   [Figma](https://www.figma.com/)
 -   Language Resources
@@ -66,7 +69,7 @@ We use the following technologies:
     -   include language variants: dialects, accents, historical forms [to be further defined]
     -   make the game a learning experience: after the user answers the question, they are shown the correct script, along with the language's name; if the user chooses wrong, they are also shown the name of the written language they selected
 
--   Languages
+-   Languages (50 in total, as in `lang50`?)
     -   natural
         -   IE
             -   Germanic
@@ -101,11 +104,11 @@ We use the following technologies:
     -   constructed (10)
         -   Esperanto
         -   Toki Pona
-        -   Klingon
-        -   Quenya
-        -   High Valyrian
-        -   Na'vi
-        -   Oqolaawak
-        -   Nekāchti
-        -   Edun
-        -   Ilothwii
+        -   Klingon (_Star Trek_)
+        -   Quenya (Tolkien)
+        -   High Valyrian (_Game of Thrones_)
+        -   Na'vi (_Avatar_)
+        -   Oqolaawak ([Biblaridion](https://www.youtube.com/channel/UCMjTcpv56G_W0FRIdPHBn4A))
+        -   Nekāchti ([Biblaridion](https://www.youtube.com/channel/UCMjTcpv56G_W0FRIdPHBn4A))
+        -   Edun ([Biblaridion](https://www.youtube.com/channel/UCMjTcpv56G_W0FRIdPHBn4A))
+        -   Ilothwii ([Biblaridion](https://www.youtube.com/channel/UCMjTcpv56G_W0FRIdPHBn4A))
