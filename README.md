@@ -33,7 +33,7 @@ Other similar projects are mentioned by the creator of the original game:
         -   autoplay option for spoken samples
     -   [Name That Language](https://namethatlanguage.org/) was a simpler version, with different aesthetic choices. It does not work any more. Apparently it had no difficulty levels, only rounds to go through with 3 lives.
 
-## Specifications
+## Technologies
 
 We use the following technologies:
 
@@ -53,3 +53,56 @@ We use the following technologies:
 -   Language Resources
     -   spoken snippets: [Wikitongues](https://wikitongues.org/)
     -   scripts: ?
+
+## Specifications
+
+- Defining features
+    - inclusion of constructed languages (on top of natural languages)
+    - providing hints to the user: specific language features to look for
+    - 5 consecutive correct answers = 1 life gets refilled out of initial 3
+    - instead of recognizing the language being spoken, the user must choose the correct transcription out of a number of script options, or vice versa
+    - possibility to exclude specific languages (e.g. native language)
+    - include different language variants? (e.g. dialects, accents)
+    - make the game a learning experience
+        - after the user answers the question, they are shown the correct script, along with the language's name. If the user chose wrong, they are also shown the name of the written language they selected.
+
+- Languages
+    - natural
+        - IE
+            - Germanic
+                - Norwegian
+                - Swedish
+                - Danish
+                - German
+                - Dutch
+                - Afrikaans
+            - Latin
+                - French
+                - Classical Latin
+                - Spanish
+                - Italian
+                - Romanian
+            - Indo-Iranian
+                - Sanskrit
+                - Farsi
+                - Hindi
+            - Hellenic
+                - Ancient Greek
+                - Modern Greek
+            - Slavic
+        - Dravidian
+        - Sino-Tibetan
+        - Congo-Niger
+        - Austronesian
+        - Uralic
+        - Afro-Asiatic
+            - Arabic
+            - Hebrew
+    - constructed
+        - Esperanto
+        - Toki Pona
+        - Klingon
+        - Quenya
+        - Sindarin
+        - Na'vi
+        - Biblardion conlangs
