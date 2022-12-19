@@ -38,7 +38,7 @@ Other similar projects are mentioned by the creator of the original game:
 We use the following technologies:
 
 -   Back-end
-    -   Java + Spring Boot
+    -   [Java](https://www.java.com/) + [Spring Boot](https://spring.io/)
     -   ? database
 -   Front-end
     -   TypeScript + [Svelte](https://svelte.dev/) and [SvelteKit](https://kit.svelte.dev/)
@@ -98,11 +98,14 @@ We use the following technologies:
         -   Afro-Asiatic
             -   Arabic
             -   Hebrew
-    -   constructed
+    -   constructed (10)
         -   Esperanto
         -   Toki Pona
         -   Klingon
         -   Quenya
         -   Sindarin
         -   Na'vi
-        -   Biblardion conlangs [to be further defined]
+        -   Oqolaawak
+        -   Nekāchti
+        -   Edun
+        -   Ilothwii
