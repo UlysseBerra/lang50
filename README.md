@@ -31,7 +31,7 @@ Other similar projects are mentioned by the creator of the original game:
     -   interesting UI features
         -   zoom on written samples (either Unicode text or images)
         -   autoplay option for spoken samples
-    -   [Name That Language](https://namethatlanguage.org/) was a simpler version, with different aesthetic choices. It does not work any more. Apparently it had no difficulty levels, only rounds to go through with 3 lives.
+-   [Name That Language](https://namethatlanguage.org/) was a simpler version, with different aesthetic choices. It does not work any more. Apparently it had no difficulty levels, only rounds to go through with 3 lives.
 
 ## Technologies
 
@@ -41,16 +41,22 @@ We use the following technologies:
     -   [Java](https://www.java.com/) + [Spring Boot](https://spring.io/)
     -   ? database
 -   Front-end
-    -   TypeScript + [Svelte](https://svelte.dev/) and [SvelteKit](https://kit.svelte.dev/)
+    -   [Svelte](https://svelte.dev/) front end compiler
         -   [Svelte Tutorial](https://svelte.dev/tutorial/)
         -   [Svelte Documentation](https://svelte.dev/docs)
+    -   [SvelteKit](https://kit.svelte.dev/) Web framework
         -   [SvelteKit Introduction](https://learn.svelte.dev/tutorial/introducing-sveltekit)
         -   [SvelteKit Documentation](https://kit.svelte.dev/docs/introduction)
-    -   ? Tailwind or Bootstrap
-    -   ? unit test library
+    -   [Tailwind](https://tailwindcss.com/) CSS framework
+    -   perhaps
+        -   [TypeScript](https://www.typescriptlang.org/) language extending JavaScript
+        -   [Bootstrap](https://getbootstrap.com/) front end framework
+        -   ? unit test library
 -   Wireframing
     -   [Figma](https://www.figma.com/)
 -   Language Resources
+    -   [Ethnologue](https://www.ethnologue.com/)
+    -   [Glottolog](https://glottolog.org/)
     -   spoken snippets: [Wikitongues](https://wikitongues.org/)
     -   scripts: ?
 
@@ -66,9 +72,9 @@ We use the following technologies:
     -   include language variants: dialects, accents, historical forms [to be further defined]
     -   make the game a learning experience: after the user answers the question, they are shown the correct script, along with the language's name; if the user chooses wrong, they are also shown the name of the written language they selected
 
--   Languages
-    -   natural
-        -   IE
+-   Languages (50 in total, as in `lang50`?)
+    -   natural languages
+        -   Indo-European
             -   Germanic
                 -   Norwegian
                 -   Swedish
@@ -92,20 +98,42 @@ We use the following technologies:
             -   Slavic
         -   Dravidian
         -   Sino-Tibetan
-        -   Congo-Niger
+        -   Niger-Congo
         -   Austronesian
         -   Uralic
         -   Afro-Asiatic
             -   Arabic
             -   Hebrew
-    -   constructed (10)
+        -   Trans-New Guinea
+    -   @REFERENCE Top 20 most spoken languages (Ethnologue, 2022)
+        -   English (1.5 B)
+        -   Mandarin Chinese (1.1 B)
+        -   Hindi (602.2 M)
+        -   Spanish (548.3 M)
+        -   French (274.1 M)
+        -   Standard Arabic (274.0 M)
+        -   Bengali (272.7 M)
+        -   Russian (258.2 M)
+        -   Portuguese (257.7 M)
+        -   Urdu (231.3 M)
+        -   Indonesian (199.0 M)
+        -   Standard German (134.6 M)
+        -   Japanese (125.4 M)
+        -   Nigerian Pidgin (120.7 M)
+        -   Marathi (99.1 M)
+        -   Telugu (95.7 M)
+        -   Turkish (88.1 M)
+        -   Tamil (86.4 M)
+        -   Yue Chinese (85.6 M)
+        -   Vietnamese (85.3 M)
+    -   constructed languages (10)
         -   Esperanto
         -   Toki Pona
-        -   Klingon
-        -   Quenya
-        -   High Valyrian
-        -   Na'vi
-        -   Oqolaawak
-        -   Nekāchti
-        -   Edun
-        -   Ilothwii
+        -   Klingon (_Star Trek_)
+        -   Quenya (Tolkien)
+        -   High Valyrian (_Game of Thrones_)
+        -   Na'vi (_Avatar_)
+        -   Oqolaawak ([Biblaridion](https://www.youtube.com/channel/UCMjTcpv56G_W0FRIdPHBn4A))
+        -   Nekāchti ([Biblaridion](https://www.youtube.com/channel/UCMjTcpv56G_W0FRIdPHBn4A))
+        -   Edun ([Biblaridion](https://www.youtube.com/channel/UCMjTcpv56G_W0FRIdPHBn4A))
+        -   Ilothwii ([Biblaridion](https://www.youtube.com/channel/UCMjTcpv56G_W0FRIdPHBn4A))
