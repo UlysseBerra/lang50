@@ -31,7 +31,7 @@ Other similar projects are mentioned by the creator of the original game:
     -   interesting UI features
         -   zoom on written samples (either Unicode text or images)
         -   autoplay option for spoken samples
--   [Name That Language](https://namethatlanguage.org/) was a simpler version, with different aesthetic choices. It does not work any more. Apparently it had no difficulty levels, only rounds to go through with 3 lives.
+-   [Name That Language](https://namethatlanguage.org/) was a simpler version, with different aesthetic choices. It does not work anymore. Apparently it had no difficulty levels, only rounds to go through with 3 lives.
 
 ## Technologies
 
@@ -52,7 +52,7 @@ We use the following technologies:
         -   [TypeScript](https://www.typescriptlang.org/) language extending JavaScript
         -   [Bootstrap](https://getbootstrap.com/) front end framework
         -   ? unit test library
--   Wireframing
+-   Wireframe
     -   [Figma](https://www.figma.com/)
 -   Language Resources
     -   [Ethnologue](https://www.ethnologue.com/)
