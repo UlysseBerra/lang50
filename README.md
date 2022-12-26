@@ -48,6 +48,7 @@ We use the following technologies:
         -   [SvelteKit Introduction](https://learn.svelte.dev/tutorial/introducing-sveltekit)
         -   [SvelteKit Documentation](https://kit.svelte.dev/docs/introduction)
     -   [Tailwind](https://tailwindcss.com/) CSS framework
+        -   ? with [daisyUI](https://daisyui.com/) Tailwind CSS Components
     -   perhaps
         -   [TypeScript](https://www.typescriptlang.org/) language extending JavaScript
         -   [Bootstrap](https://getbootstrap.com/) front end framework
