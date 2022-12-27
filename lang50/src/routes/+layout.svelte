@@ -11,7 +11,11 @@
     </main>
 
     <footer>
-        <p>This is <code>lang50</code></p>
+        <p>
+            This is <a href="https://github.com/UlysseBerra/lang50"
+                ><code>lang50</code></a
+            >
+        </p>
     </footer>
 </div>
 

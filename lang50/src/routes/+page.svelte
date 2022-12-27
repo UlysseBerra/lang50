@@ -13,10 +13,18 @@
         <span class="tmp_logo">
             <picture>
                 <source srcset={tmp_logo} type="image/png" />
-                <img src={tmp_logo} width="300px" alt="Welcome to lang50" />
+                <img src={tmp_logo} width="250px" alt="Welcome to lang50" />
             </picture>
         </span>
     </h1>
+
+    <p>
+        You know what <code>lang50</code> is, right? Well, if you don't, here is
+        a blurb: lorem ipsum tralala lorem ipsum tralala lorem ipsum tralala lorem
+        ipsum tralala lorem ipsum tralala lorem ipsum tralala lorem ipsum tralala
+        lorem ipsum tralala lorem ipsum tralala lorem ipsum tralala lorem ipsum tralala
+        lorem ipsum tralala.
+    </p>
 
     <!-- <Counter /> -->
 </section>

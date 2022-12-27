@@ -20,11 +20,11 @@
                 <a href="/">Home</a>
             </li>
             <li
-                aria-current={$page.url.pathname === "/about"
+                aria-current={$page.url.pathname === "/game"
                     ? "page"
                     : undefined}
             >
-                <a href="/about">About</a>
+                <a href="/game">Game</a>
             </li>
             <li
                 aria-current={$page.url.pathname.startsWith("/leaderboard")
@@ -77,15 +77,15 @@
         --background: rgba(255, 255, 255, 0.7);
     }
 
-    svg {
+    /* svg {
         width: 2em;
         height: 3em;
         display: block;
-    }
+    } */
 
-    path {
+    /* path {
         fill: var(--background);
-    }
+    } */
 
     ul {
         position: relative;
