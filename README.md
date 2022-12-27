@@ -89,23 +89,46 @@ We use the following technologies:
                 -   Spanish
                 -   Italian
                 -   Romanian
+                -   Portuguese
             -   Indo-Iranian
                 -   Sanskrit
                 -   Farsi
                 -   Hindi
+                -   Punjabi
+                -   Marathi
+                -   Bengali
             -   Hellenic
                 -   Ancient Greek
                 -   Modern Greek
             -   Slavic
+                -   Russian
+                -   Czech
+                -   Slovak
+                -   Ukranian
+                -   Polish
         -   Dravidian
+            -   Malayalam
+            -   Tamil
+            -   Telugu
+            -   Kannada
         -   Sino-Tibetan
+            -   Mandarin Chinese
+            -   Cantonese Chinese
         -   Niger-Congo
         -   Austronesian
+            -   Indonesian
         -   Uralic
         -   Afro-Asiatic
             -   Arabic
             -   Hebrew
         -   Trans-New Guinea
+        -   Nigerian Pidgin
+        @TODO reorder below
+        -   Vietnamese
+        -   Japanese
+        -   Turkish
+        -   Thai
+        -   Khmer
     -   @REFERENCE Top 20 most spoken languages (Ethnologue, 2022)
         -   English (1.5 B)
         -   Mandarin Chinese (1.1 B)
