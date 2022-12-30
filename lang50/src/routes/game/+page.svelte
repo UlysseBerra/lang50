@@ -1,11 +1,11 @@
 <script>
     let scripts = 1;
 
+    // import { AudioPlayer } from "svelte-mp3";
     import AudioPlayer, { stopAll } from "./AudioPlayer.svelte";
-
-    // let audioTrack = "https://sveltejs.github.io/assets/music/satie.mp3";
     import idontunderstand_el from "$lib/audio/idontunderstand_el.mp3";
     let audioTrack = idontunderstand_el;
+    // let audioTrack = "https://sveltejs.github.io/assets/music/satie.mp3";
 
     import runes from "$lib/images/runes.png";
     import greek_modern from "$lib/images/greek_modern.png";
@@ -38,6 +38,9 @@
     </div>
 
     <h2>Audio: listen!</h2>
+
+    <!-- @TODO make this work as per https://www.npmjs.com/package/svelte-mp3
+        <AudioPlayer urls=["https://sveltejs.github.io/assets/music/satie.mp3","https://sveltejs.github.io/assets/music/satie.mp3"] /> -->
 
     <AudioPlayer src={audioTrack} />
     <!-- <button class="btn btn-ghost" on:click={stopAll} style="width:300px"
