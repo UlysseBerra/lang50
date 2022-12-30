@@ -72,7 +72,7 @@
             <source srcset={runes} type="image/png" />
             <img src={runes} alt="runes" width="500px" />
         </picture>
-        <button class="btn btn-ghost">Hint</button>
+        <!-- <button class="btn btn-ghost">Hint</button> -->
     </label>
 
     <label>
@@ -81,7 +81,7 @@
             <source srcset={greek_modern} type="image/png" />
             <img src={greek_modern} alt="greek_modern" width="500px" />
         </picture>
-        <button class="btn btn-ghost">Hint</button>
+        <!-- <button class="btn btn-ghost">Hint</button> -->
     </label>
 
     <label>
@@ -90,6 +90,35 @@
             <source srcset={georgian} type="image/png" />
             <img src={georgian} alt="georgian" width="500px" />
         </picture>
-        <button class="btn btn-ghost">Hint</button>
+        <!-- <button class="btn btn-ghost">Hint</button> -->
     </label>
+
+    <!-- <div class="drawer drawer-end">
+        <input id="my-drawer-hint" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-content">
+            <label for="my-drawer-hint" class="drawer-button btn btn-primary"
+                >Hint</label
+            >
+        </div>
+        <div class="drawer-side">
+            <label for="my-drawer-hint" class="drawer-overlay" />
+            <p class="p-4 w-80 bg-base-100 text-base-content">
+                This is what you should know about this script. Enlightening?
+            </p>
+        </div>
+    </div> -->
+
+    <div class="collapse">
+        <input type="checkbox" class="peer" />
+        <div
+            class="collapse-title bg-base-100 text-primary-content peer-checked:bg-primary-focus peer-checked:text-primary-content text-center"
+        >
+            <div class="badge badge-lg badge-primary badge-outline">Hint</div>
+        </div>
+        <div
+            class="collapse-content bg-primary-focus text-primary-content peer-checked:bg-primary-focus peer-checked:text-primary-content"
+        >
+            This is what you should know about this script. Enlightening?
+        </div>
+    </div>
 </div>
