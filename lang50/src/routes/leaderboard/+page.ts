@@ -1,9 +1,6 @@
-import { dev } from '$app/environment';
-
-// we don't need any JS on this page, though we'll load
-// it in dev so that we get hot module replacement
-export const csr = dev;
+// import { dev } from '$app/environment';
 
 // since there's no dynamic data here, we can prerender
 // it so that it gets served as a static asset in production
-export const prerender = true;
+// export const prerender = true;
+export const prerender = false; // temp: while page is used as GET demo

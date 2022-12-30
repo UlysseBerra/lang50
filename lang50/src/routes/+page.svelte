@@ -1,5 +1,4 @@
 <script>
-    // import Counter from "./Counter.svelte";
     import tmp_logo from "$lib/images/tmp_logo.png";
 </script>
 
@@ -25,6 +24,4 @@
         lorem ipsum tralala lorem ipsum tralala lorem ipsum tralala lorem ipsum tralala
         lorem ipsum tralala.
     </p>
-
-    <!-- <Counter /> -->
 </section>
