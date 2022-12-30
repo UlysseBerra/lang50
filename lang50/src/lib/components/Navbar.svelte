@@ -1,5 +1,5 @@
 <script>
-    import ThemeSelect from "./Theme-select.svelte";
+    // import ThemeSelect from "./Theme-select.svelte";
 </script>
 
 <div class="navbar bg-primary text-primary-content">
@@ -18,10 +18,35 @@
         <ul class="menu menu-horizontal px-1">
             <li>
                 <a class="menu menu-horizontal px-1" href="/authentication"
-                    >Log in & Sign up</a
+                    >Login</a
                 >
             </li>
-            <li><ThemeSelect /></li>
+            <!-- <li><ThemeSelect /></li> -->
         </ul>
+        <!-- <div class="avatar online placeholder">
+            <div
+                class="bg-neutral-focus text-neutral-content rounded-full w-10"
+            >
+                Me
+            </div>
+        </div> -->
+
+        <label class="swap">
+            <input type="checkbox" />
+            <div class="swap-on avatar online placeholder">
+                <div
+                    class="bg-neutral-focus text-neutral-content rounded-full w-11"
+                >
+                    Me
+                </div>
+            </div>
+            <div class="swap-off avatar placeholder">
+                <div
+                    class="bg-neutral-focus text-neutral-content rounded-full w-11"
+                >
+                    Who?
+                </div>
+            </div>
+        </label>
     </div>
 </div>

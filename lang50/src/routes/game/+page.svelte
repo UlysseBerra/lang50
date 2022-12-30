@@ -20,10 +20,27 @@
 <div class="text-column">
     <h1>Game</h1>
 
+    <div class="stats shadow">
+        <div class="stat place-items-center">
+            <div class="stat-title">Round</div>
+            <div class="stat-value">1</div>
+        </div>
+
+        <div class="stat place-items-center">
+            <div class="stat-title">Score</div>
+            <div class="stat-value">0</div>
+        </div>
+
+        <div class="stat place-items-center">
+            <div class="stat-title">Lives</div>
+            <div class="stat-value">3</div>
+        </div>
+    </div>
+
     <h2>Audio: listen!</h2>
 
     <AudioPlayer src={audioTrack} />
-    <!-- <button class="btn btn-accent" on:click={stopAll} style="width:300px"
+    <!-- <button class="btn btn-ghost" on:click={stopAll} style="width:300px"
         >Stop!
     </button> -->
 
@@ -52,6 +69,7 @@
             <source srcset={runes} type="image/png" />
             <img src={runes} alt="runes" width="500px" />
         </picture>
+        <button class="btn btn-ghost">Hint</button>
     </label>
 
     <label>
@@ -60,6 +78,7 @@
             <source srcset={greek_modern} type="image/png" />
             <img src={greek_modern} alt="greek_modern" width="500px" />
         </picture>
+        <button class="btn btn-ghost">Hint</button>
     </label>
 
     <label>
@@ -68,5 +87,6 @@
             <source srcset={georgian} type="image/png" />
             <img src={georgian} alt="georgian" width="500px" />
         </picture>
+        <button class="btn btn-ghost">Hint</button>
     </label>
 </div>
