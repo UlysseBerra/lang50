@@ -37,9 +37,11 @@ Other similar projects are mentioned by the creator of the original game:
 
 We use the following technologies:
 
+-   Wireframing
+    -   [Figma](https://www.figma.com/)
 -   Back-end
     -   [Java](https://www.java.com/) + [Spring Boot](https://spring.io/)
-    -   ? database
+    -   ? H2 database
 -   Front-end
     -   [Svelte](https://svelte.dev/) front end compiler
         -   [Svelte Tutorial](https://svelte.dev/tutorial/)
@@ -47,14 +49,9 @@ We use the following technologies:
     -   [SvelteKit](https://kit.svelte.dev/) Web framework
         -   [SvelteKit Introduction](https://learn.svelte.dev/tutorial/introducing-sveltekit)
         -   [SvelteKit Documentation](https://kit.svelte.dev/docs/introduction)
+    -   [TypeScript](https://www.typescriptlang.org/) language extending JavaScript
     -   [Tailwind](https://tailwindcss.com/) CSS framework
-        -   ? with [daisyUI](https://daisyui.com/) Tailwind CSS Components
-    -   perhaps
-        -   [TypeScript](https://www.typescriptlang.org/) language extending JavaScript
-        -   [Bootstrap](https://getbootstrap.com/) front end framework
-        -   ? unit test library
--   Wireframe
-    -   [Figma](https://www.figma.com/)
+    -   [daisyUI](https://daisyui.com/) Tailwind CSS Components
 -   Language Resources
     -   [Ethnologue](https://www.ethnologue.com/)
     -   [Glottolog](https://glottolog.org/)
@@ -65,13 +62,13 @@ We use the following technologies:
 
 -   Defining features
 
+    -   foreground association of oral and written forms of the languages: instead of recognizing the language being spoken, the user must choose the correct transcription in the original script out of a number of options
     -   include constructed languages, on top of natural languages
-    -   provide hints to the user: specific language features to look for
-    -   add life refill mechanism: after 5 consecutive correct answers, 1 life gets refilled out of initial 3
-    -   foreground association of oral and written forms of the languages: instead of recognizing the language being spoken, the user must choose the correct transcription in the original script out of a number of options [to be further defined: also the reverse, i.e. see script and select audio?]
-    -   provide the option to exclude specific languages, e.g. the user's native language
     -   include language variants: dialects, accents, historical forms [to be further defined]
     -   make the game a learning experience: after the user answers the question, they are shown the correct script, along with the language's name; if the user chooses wrong, they are also shown the name of the written language they selected
+    -   provide hints to the user: specific language features to look for
+    -   add life refill mechanism: after 5 consecutive correct answers, 1 life gets refilled out of initial 3
+    -   provide the option to exclude specific languages, e.g. the user's native language
 
 -   Languages (50 in total, as in `lang50`?)
     -   natural languages
@@ -123,7 +120,7 @@ We use the following technologies:
             -   Hebrew
         -   Trans-New Guinea
         -   Nigerian Pidgin
-        @TODO reorder below
+            @TODO reorder below
         -   Vietnamese
         -   Japanese
         -   Turkish

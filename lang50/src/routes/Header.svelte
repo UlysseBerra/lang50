@@ -1,49 +1,44 @@
 <script>
     import { page } from "$app/stores";
     import tmp_logo from "$lib/images/tmp_logo.png";
-    import github from "$lib/images/github.svg";
 </script>
 
 <header>
-    <div class="corner">
+    <!-- <div class="corner">
         <a href=".">
             <img src={tmp_logo} alt="lang50" />
         </a>
     </div>
 
     <nav>
-        <!-- <svg viewBox="0 0 2 3" aria-hidden="true">
-            <path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-        </svg> -->
         <ul>
             <li aria-current={$page.url.pathname === "/" ? "page" : undefined}>
                 <a href="/">Home</a>
             </li>
             <li
-                aria-current={$page.url.pathname === "/about"
+                aria-current={$page.url.pathname === "/game"
                     ? "page"
                     : undefined}
             >
-                <a href="/about">About</a>
+                <a href="/game">Game</a>
             </li>
             <li
-                aria-current={$page.url.pathname.startsWith("/leaderboard")
+                aria-current={$page.url.pathname === "/leaderboard"
                     ? "page"
                     : undefined}
             >
                 <a href="/leaderboard">Leaderboard</a>
             </li>
         </ul>
-        <!-- <svg viewBox="0 0 2 3" aria-hidden="true">
-            <path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-        </svg> -->
-    </nav>
+    </nav> -->
 
+    <!--
     <div class="corner">
-        <a href="https://github.com/UlysseBerra/lang50">
+            <a href="https://github.com/UlysseBerra/lang50">
             <img src={github} alt="lang50 GitHub" />
         </a>
     </div>
+-->
 </header>
 
 <style>
@@ -77,15 +72,15 @@
         --background: rgba(255, 255, 255, 0.7);
     }
 
-    svg {
+    /* svg {
         width: 2em;
         height: 3em;
         display: block;
-    }
+    } */
 
-    path {
+    /* path {
         fill: var(--background);
-    }
+    } */
 
     ul {
         position: relative;

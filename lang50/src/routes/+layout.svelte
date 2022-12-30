@@ -1,17 +1,40 @@
 <script>
+    import "../app.postcss";
     import Header from "./Header.svelte";
     import "./styles.css";
+    import "./styles_output.css";
+    import github from "$lib/images/github.svg";
+    import Navbar from "$lib/components/Navbar.svelte";
+
+    import { onMount } from "svelte";
+    import { themeChange } from "theme-change";
+    onMount(() => {
+        themeChange(false);
+    });
 </script>
 
 <div class="app">
-    <Header />
+    <!-- <header /> -->
+    <Navbar />
 
     <main>
         <slot />
     </main>
 
     <footer>
-        <p>This is <code>lang50</code></p>
+        <p>
+            This is <a href="https://github.com/UlysseBerra/lang50"
+                ><code>lang50</code>
+            </a>
+            <a href="https://github.com/UlysseBerra/lang50">
+                <img
+                    class="logo"
+                    src={github}
+                    alt="lang50 GitHub"
+                    width="25px"
+                /></a
+            >
+        </p>
     </footer>
 </div>
 
