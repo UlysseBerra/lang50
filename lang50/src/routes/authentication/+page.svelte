@@ -17,6 +17,7 @@
     >
         <div class="card-body">
             <div class="form-control">
+                <!-- svelte-ignore a11y-label-has-associated-control -->
                 <label class="label">
                     <span class="label-text">Email</span>
                 </label>
@@ -27,6 +28,7 @@
                 />
             </div>
             <div class="form-control">
+                <!-- svelte-ignore a11y-label-has-associated-control -->
                 <label class="label">
                     <span class="label-text">Password</span>
                 </label>
@@ -35,8 +37,9 @@
                     placeholder="password"
                     class="input input-bordered"
                 />
+                <!-- svelte-ignore a11y-label-has-associated-control -->
                 <label class="label">
-                    <a href="#" class="label-text-alt link link-hover"
+                    <a href="." class="label-text-alt link link-hover"
                         >Forgot password?</a
                     >
                 </label>

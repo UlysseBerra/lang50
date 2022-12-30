@@ -20,7 +20,7 @@
 <div class="text-column">
     <h1>Game</h1>
 
-    <div class="stats shadow">
+    <div class="stats shadow mt-12 mb-12">
         <div class="stat place-items-center">
             <div class="stat-title">Round</div>
             <div class="stat-value">1</div>
@@ -37,7 +37,7 @@
         </div>
     </div>
 
-    <h2>Audio: listen!</h2>
+    <h2 class="mt-12">Audio: listen!</h2>
 
     <!-- @TODO make this work as per https://www.npmjs.com/package/svelte-mp3
         <AudioPlayer urls=["https://sveltejs.github.io/assets/music/satie.mp3","https://sveltejs.github.io/assets/music/satie.mp3"] /> -->
@@ -64,7 +64,7 @@
         ვეპხის ტყაოსანი შოთა რუსთაველი
     </label> -->
 
-    <h2>Scripts: pick the right script!</h2>
+    <h2 class="mt-12">Scripts: pick the right script!</h2>
 
     <label>
         <input type="radio" bind:group={scripts} value={1} />
@@ -111,12 +111,12 @@
     <div class="collapse">
         <input type="checkbox" class="peer" />
         <div
-            class="collapse-title bg-base-100 text-primary-content peer-checked:bg-primary-focus peer-checked:text-primary-content text-center"
+            class="collapse-title bg-base-100 text-primary-content peer-checked:bg-primary-focus peer-checked:text-primary-content rounded-t-lg mt-6 text-center"
         >
             <div class="badge badge-lg badge-primary badge-outline">Hint</div>
         </div>
         <div
-            class="collapse-content bg-primary-focus text-primary-content peer-checked:bg-primary-focus peer-checked:text-primary-content"
+            class="collapse-content bg-primary-focus text-primary-content peer-checked:bg-primary-focus peer-checked:text-primary-content rounded-b-lg"
         >
             This is what you should know about this script. Enlightening?
         </div>
