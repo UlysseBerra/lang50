@@ -1,5 +1,5 @@
 <script>
-    import tmp_logo from "$lib/images/tmp_logo.png";
+    import lang50_logo from "$lib/images/lang50_logo.png";
 </script>
 
 <svelte:head>
@@ -9,10 +9,10 @@
 
 <section>
     <h1>
-        <span class="tmp_logo">
+        <span class="lang50_logo">
             <picture>
-                <source srcset={tmp_logo} type="image/png" />
-                <img src={tmp_logo} width="250px" alt="Welcome to lang50" />
+                <source srcset={lang50_logo} type="image/png" />
+                <img src={lang50_logo} width="250px" alt="Welcome to lang50" />
             </picture>
         </span>
     </h1>
