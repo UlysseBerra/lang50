@@ -14,9 +14,6 @@
 
 <div class="text-column">
     <h1>Leaderboard</h1>
-
-    <p>Here soon: a list of users and scores</p>
-    <p>In the meanwhile, let me use it as a demo page for GET requests.</p>
 </div>
 
 {#await fetchUsers}

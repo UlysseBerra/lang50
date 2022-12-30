@@ -20,16 +20,14 @@
 <div class="text-column">
     <h1>Game</h1>
 
-    <p style="text-align:center">Here soon: audio + scripts + hints</p>
-
-    <h2>Audio</h2>
+    <h2>Audio: listen!</h2>
 
     <AudioPlayer src={audioTrack} />
-    <button class="btn btn-accent" on:click={stopAll} style="width:300px"
+    <!-- <button class="btn btn-accent" on:click={stopAll} style="width:300px"
         >Stop!
-    </button>
+    </button> -->
 
-    <h2>Scripts as text</h2>
+    <!-- <h2>Scripts as text</h2>
 
     <label>
         <input type="radio" bind:group={scripts} value={1} />
@@ -44,9 +42,9 @@
     <label>
         <input type="radio" bind:group={scripts} value={3} />
         ვეპხის ტყაოსანი შოთა რუსთაველი
-    </label>
+    </label> -->
 
-    <h2>Scripts as images</h2>
+    <h2>Scripts: pick the right script!</h2>
 
     <label>
         <input type="radio" bind:group={scripts} value={1} />

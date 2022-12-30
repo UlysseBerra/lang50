@@ -5,8 +5,8 @@
 </script>
 
 <svelte:head>
-    <title>Log In</title>
-    <meta name="description" content="Sign" />
+    <title>Log in</title>
+    <meta name="description" content="Authentication" />
 </svelte:head>
 
 <div class="text-column">
@@ -42,7 +42,7 @@
                 </label>
             </div>
             <div class="form-control mt-6">
-                <button class="btn btn-primary">Login</button>
+                <button class="btn btn-primary">Log in</button>
             </div>
         </div>
     </div>

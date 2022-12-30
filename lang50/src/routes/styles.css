@@ -4,6 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
+audio,
+picture {
+    display: inline;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* :root {
     --font-body: Ubuntu, Arial, -apple-system, BlinkMacSystemFont, "Segoe UI",
         Roboto, Oxygen, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
