@@ -51,7 +51,7 @@ We use the following technologies:
         -   [SvelteKit Documentation](https://kit.svelte.dev/docs/introduction)
     -   [TypeScript](https://www.typescriptlang.org/) language extending JavaScript
     -   [Tailwind](https://tailwindcss.com/) CSS framework
-    - [daisyUI](https://daisyui.com/) Tailwind CSS Components
+    -   [daisyUI](https://daisyui.com/) Tailwind CSS Components
 -   Language Resources
     -   [Ethnologue](https://www.ethnologue.com/)
     -   [Glottolog](https://glottolog.org/)
@@ -120,7 +120,7 @@ We use the following technologies:
             -   Hebrew
         -   Trans-New Guinea
         -   Nigerian Pidgin
-        @TODO reorder below
+            @TODO reorder below
         -   Vietnamese
         -   Japanese
         -   Turkish
