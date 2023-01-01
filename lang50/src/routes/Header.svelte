@@ -1,12 +1,12 @@
 <script>
     import { page } from "$app/stores";
-    import tmp_logo from "$lib/images/tmp_logo.png";
+    import lang50_logo from "$lib/images/lang50_logo.png";
 </script>
 
 <header>
     <!-- <div class="corner">
         <a href=".">
-            <img src={tmp_logo} alt="lang50" />
+            <img src={lang50_logo} alt="lang50" />
         </a>
     </div>
 
