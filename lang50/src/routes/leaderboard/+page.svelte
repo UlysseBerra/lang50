@@ -29,19 +29,19 @@
         <table class="table table-compact w-full">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>Rank</th>
+                    <th>Score</th>
                     <th>Name</th>
                     <th>Username</th>
-                    <th>Score</th>
                 </tr>
             </thead>
             <tbody>
-                {#each test_data as user}
+                {#each test_data as user, i}
                     <tr>
-                        <td>{user.id}</td>
+                        <td>{i + 1}</td>
+                        <td>{user.score}</td>
                         <td>{user.name}</td>
                         <td>{user.username}</td>
-                        <td>{user.score}</td>
                     </tr>
                 {/each}
             </tbody>

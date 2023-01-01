@@ -2,10 +2,10 @@
     let scripts = 1;
 
     // import { AudioPlayer } from "svelte-mp3";
-    import AudioPlayer, { stopAll } from "./AudioPlayer.svelte";
+    import AudioPlayer, { stopAll } from "$lib/components/AudioPlayer.svelte";
     import idontunderstand_el from "$lib/audio/idontunderstand_el.mp3";
-    let audioTrack = idontunderstand_el;
-    // let audioTrack = "https://sveltejs.github.io/assets/music/satie.mp3";
+    let audioTrack1 = idontunderstand_el;
+    // let audioTrack2 = "https://sveltejs.github.io/assets/music/satie.mp3";
 
     import runes from "$lib/images/runes.png";
     import greek_modern from "$lib/images/greek_modern.png";
@@ -39,10 +39,11 @@
 
     <h2 class="mt-12">Audio: listen!</h2>
 
-    <!-- @TODO make this work as per https://www.npmjs.com/package/svelte-mp3
-        <AudioPlayer urls=["https://sveltejs.github.io/assets/music/satie.mp3","https://sveltejs.github.io/assets/music/satie.mp3"] /> -->
+    <!-- @TODO audio base64 decode -->
 
-    <AudioPlayer src={audioTrack} />
+    <!-- @TODO add controls when sources are available -->
+    <AudioPlayer src={audioTrack1} />
+    <!-- <AudioPlayer src={audioTrack2} /> -->
     <!-- <button class="btn btn-ghost" on:click={stopAll} style="width:300px"
         >Stop!
     </button> -->
@@ -113,10 +114,10 @@
         <div
             class="collapse-title bg-base-100 text-primary-content peer-checked:bg-primary-focus peer-checked:text-primary-content rounded-t-lg mt-6 text-center"
         >
-            <div class="badge badge-lg badge-primary badge-outline">Hint</div>
+            <div class="badge badge-lg badge-secondary badge-outline">Hint</div>
         </div>
         <div
-            class="collapse-content bg-primary-focus text-primary-content peer-checked:bg-primary-focus peer-checked:text-primary-content rounded-b-lg"
+            class="collapse-content bg-primary-focus text-primary-content peer-checked:bg-primary-focus peer-checked:text-primary-content rounded-b-lg text-center"
         >
             This is what you should know about this script. Enlightening?
         </div>

@@ -34,7 +34,6 @@
   "dependencies": {
     "@tailwindcss/typography": "^0.5.8",
     "daisyui": "^2.46.0",
-    "svelte-mp3": "^1.2.0",
     "theme-change": "^2.2.0"
   }
 }
