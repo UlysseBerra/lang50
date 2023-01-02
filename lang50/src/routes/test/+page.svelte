@@ -1,30 +1,20 @@
 <script lang="ts">
     import AudioControls from "$lib/components/AudioControls.svelte";
     // import AudioPlayer, { stopAll } from "$lib/components/AudioPlayer.svelte";
-    import { AudioPlayer } from "svelte-mp3";
     import idontunderstand_el from "$lib/audio/idontunderstand_el.mp3";
     let audioTrack = idontunderstand_el;
 
-    // Encode/decode string with atob/btoa
-    // let encodedStr = "SGVsbG9AV29ybGQ=";
-    // let decodedStr = window.atob(encodedStr);
-    // console.log(decodedStr);
-
-    // const encode = window.btoa("CodezUp");
+    // Encode/decode text string with btoa/atob
+    // const encode = window.btoa("Hello world");
     // console.log("ENCODED: ", encode);
-    // const decode = window.btoa(encode);
+    // const decode = window.atob(encode);
     // console.log("DECODED: ", decode);
 
-    // Import ASCII from JSON
-    // @TODO how to play it after proper decoding?
-    import encoded from "$lib/audio/test_audio2.json";
-    // let decoded = window.atob(audio);
-    let audio = encoded.audio.content;
-    // test = window.atob(audio);
-    // let test = new Audio("data:audio/ogg;base64,".concat(audio));
-    // console.log(audio);
-    let decoded = window.btoa(audio);
-    // console.log("DECODED: ", decoded);
+    // Import base64 ASCII from JSON
+    import encoded from "$lib/audio/test_audio.json";
+    const audio = encoded.audio;
+    const test = `data:audio/mp3;base64,${audio}`;
+    // console.log(test)
 </script>
 
 <svelte:head>
@@ -34,21 +24,14 @@
 
 <div class="text-column">
     <h1>Test</h1>
-
-    <!-- <AudioPlayer src={audioTrack} /> -->
-
-    <!-- @TODO play audio from base64 decoded data -->
 </div>
 
-<!-- @NOTE can't get the default audio tag to work -->
+<div class="mb-20">
+    <audio controls preload="metadata">
+        <source src={test} type="audio/mp3" />
+    </audio>
+</div>
 
-<!-- AudioControls component from https://github.com/Linkcube/svelte-audio-controls -->
-<div>
-    <AudioControls
-        src="https://sveltejs.github.io/assets/music/satie.mp3"
-        display={true}
-        iconColor="#D926AA"
-        barPrimaryColor="#661AE6"
-        barSecondaryColor="#661AE6"
-    />
+<div class="w-fit place-self-center mb-20">
+    <AudioControls src={test} display={true} />
 </div>

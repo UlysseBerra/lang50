@@ -1,6 +1,5 @@
 <script>
     import "../app.postcss";
-    import Header from "./Header.svelte";
     import "./styles.css";
     import "./styles_output.css";
     import github from "$lib/images/github.svg";
@@ -14,7 +13,6 @@
 </script>
 
 <div class="app">
-    <!-- <header /> -->
     <Navbar />
 
     <main>
@@ -38,6 +36,7 @@
     </footer>
 </div>
 
+<!-- @TODO remove this CSS code and use Tailwind classes instead -->
 <style>
     .app {
         display: flex;

@@ -1,11 +1,13 @@
 <script>
     let scripts = 1;
 
-    // import { AudioPlayer } from "svelte-mp3";
-    import AudioPlayer, { stopAll } from "$lib/components/AudioPlayer.svelte";
+    import AudioPlayer from "$lib/components/AudioPlayer.svelte";
     import idontunderstand_el from "$lib/audio/idontunderstand_el.mp3";
-    let audioTrack1 = idontunderstand_el;
-    // let audioTrack2 = "https://sveltejs.github.io/assets/music/satie.mp3";
+    let audioTrack = idontunderstand_el;
+
+    import encoded from "$lib/audio/test_audio.json";
+    const audio = encoded.audio;
+    const test = `data:audio/mp3;base64,${audio}`;
 
     import runes from "$lib/images/runes.png";
     import greek_modern from "$lib/images/greek_modern.png";
@@ -39,14 +41,13 @@
 
     <h2 class="mt-12">Audio: listen!</h2>
 
-    <!-- @TODO audio base64 decode -->
+    <h3 class="mt-6 text-center">From MP3 file</h3>
+    <AudioPlayer src={audioTrack} />
 
-    <!-- @TODO add controls when sources are available -->
-    <AudioPlayer src={audioTrack1} />
-    <!-- <AudioPlayer src={audioTrack2} /> -->
-    <!-- <button class="btn btn-ghost" on:click={stopAll} style="width:300px"
-        >Stop!
-    </button> -->
+    <h3 class="mt-6 text-center">From base64 encoding in JSON file</h3>
+    <audio controls preload="metadata">
+        <source src={test} type="audio/mp3" />
+    </audio>
 
     <!-- <h2>Scripts as text</h2>
 
@@ -73,7 +74,6 @@
             <source srcset={runes} type="image/png" />
             <img src={runes} alt="runes" width="500px" />
         </picture>
-        <!-- <button class="btn btn-ghost">Hint</button> -->
     </label>
 
     <label>
@@ -82,7 +82,6 @@
             <source srcset={greek_modern} type="image/png" />
             <img src={greek_modern} alt="greek_modern" width="500px" />
         </picture>
-        <!-- <button class="btn btn-ghost">Hint</button> -->
     </label>
 
     <label>
@@ -91,23 +90,7 @@
             <source srcset={georgian} type="image/png" />
             <img src={georgian} alt="georgian" width="500px" />
         </picture>
-        <!-- <button class="btn btn-ghost">Hint</button> -->
     </label>
-
-    <!-- <div class="drawer drawer-end">
-        <input id="my-drawer-hint" type="checkbox" class="drawer-toggle" />
-        <div class="drawer-content">
-            <label for="my-drawer-hint" class="drawer-button btn btn-primary"
-                >Hint</label
-            >
-        </div>
-        <div class="drawer-side">
-            <label for="my-drawer-hint" class="drawer-overlay" />
-            <p class="p-4 w-80 bg-base-100 text-base-content">
-                This is what you should know about this script. Enlightening?
-            </p>
-        </div>
-    </div> -->
 
     <div class="collapse">
         <input type="checkbox" class="peer" />
@@ -119,7 +102,7 @@
         <div
             class="collapse-content bg-primary-focus text-primary-content peer-checked:bg-primary-focus peer-checked:text-primary-content rounded-b-lg text-center"
         >
-            This is what you should know about this script. Enlightening?
+            This is what you should know about the correct script. Enlightening?
         </div>
     </div>
 </div>
