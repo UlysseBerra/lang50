@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/api")
+@RequestMapping("/")
 public class LanguageController {
     @Autowired
     LanguageRepository languageRepository;

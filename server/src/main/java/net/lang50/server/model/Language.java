@@ -2,8 +2,6 @@ package net.lang50.server.model;
 
 import jakarta.persistence.*;
 
-import java.sql.Blob;
-
 @Entity
 @Table(name = "languages")
 public class Language {
@@ -16,12 +14,17 @@ public class Language {
 
     @Column(name = "audio")
     @Lob
-    private Blob audio;
+    private byte[] audio;
 
     @Column(name = "script")
-    private Blob script;
+    @Lob
+    private byte[] script;
 
-    public Language(String name, Blob audio, Blob script) {
+    public Language() {
+
+    }
+
+    public Language(String name, byte[] audio, byte[] script) {
         this.name = name;
         this.audio = audio;
         this.script = script;
@@ -29,6 +32,10 @@ public class Language {
 
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -39,19 +46,19 @@ public class Language {
         this.name = name;
     }
 
-    public Blob getAudio() {
+    public byte[] getAudio() {
         return audio;
     }
 
-    public void setAudio(Blob audio) {
+    public void setAudio(byte[] audio) {
         this.audio = audio;
     }
 
-    public Blob getScript() {
+    public byte[] getScript() {
         return script;
     }
 
-    public void setScript(Blob script) {
+    public void setScript(byte[] script) {
         this.script = script;
     }
 
