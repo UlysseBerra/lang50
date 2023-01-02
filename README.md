@@ -41,7 +41,7 @@ We use the following technologies:
     -   [Figma](https://www.figma.com/)
 -   Back-end
     -   [Java](https://www.java.com/) + [Spring Boot](https://spring.io/)
-    -   ? H2 database
+    -   [H2 database](http://h2database.com/)
 -   Front-end
     -   [Svelte](https://svelte.dev/) front end compiler
         -   [Svelte Tutorial](https://svelte.dev/tutorial/)
