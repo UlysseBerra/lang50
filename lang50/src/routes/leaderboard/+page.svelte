@@ -1,13 +1,7 @@
 <script>
-    // const url = "https://jsonplaceholder.typicode.com/users";
-    // const fetchUsers = (async () => {
-    //     const response = await fetch(url);
-    //     let users = await response.json();
-    //     return users;
-    // })();
 
     const fetchTestData = (async () => {
-        const response = await fetch("test.json");
+        const response = await fetch("src/lib/users/test_users.json");
         let test_data = await response.json();
         return test_data;
     })();
@@ -50,30 +44,3 @@
 {:catch error}
     <p>An error occurred!</p>
 {/await}
-
-<!-- {#await fetchUsers}
-    <p>...waiting</p>
-{:then users}
-    <div class="overflow-x-auto">
-        <table class="table table-compact w-full">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Username</th>
-                    <th>Email</th>
-                </tr>
-            </thead>
-            <tbody>
-                {#each users as user}
-                    <tr>
-                        <td>{user.name}</td>
-                        <td>{user.username}</td>
-                        <td>{user.email}</td>
-                    </tr>
-                {/each}
-            </tbody>
-        </table>
-    </div>
-{:catch error}
-    <p>An error occurred!</p>
-{/await} -->
