@@ -5,7 +5,7 @@
     import idontunderstand_el from "$lib/audio/idontunderstand_el.mp3";
     let audioTrack = idontunderstand_el;
 
-    import encoded from "$lib/audio/tmp.json";
+    import encoded from "$lib/audio/test_audio.json";
     const audio = encoded.audio;
     const test = `data:audio/mp3;base64,${audio}`;
 
@@ -45,8 +45,8 @@
     <AudioPlayer src={audioTrack} />
 
     <h3 class="mt-6 text-center">From base64 encoding in JSON file</h3>
-    <audio controls preload="none">
-        <source src="{test}" type="audio/mp3">
+    <audio controls preload="metadata">
+        <source src={test} type="audio/mp3" />
     </audio>
 
     <!-- <h2>Scripts as text</h2>

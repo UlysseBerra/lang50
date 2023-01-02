@@ -1,7 +1,4 @@
 <script lang="ts">
-    // import type { PageData } from "./$types";
-
-    // export let data: PageData;
 </script>
 
 <svelte:head>
@@ -13,7 +10,6 @@
     <h1>Log in & Sign up</h1>
 
     <div class="card flex-shrink-0 w-full max-w-sm bg-base-100 text-center">
-        <!-- shadow-2xl -->
         <div class="card-body">
             <div class="form-control">
                 <!-- svelte-ignore a11y-label-has-associated-control -->
@@ -22,8 +18,8 @@
                 </label>
                 <input
                     type="text"
-                    placeholder="email"
-                    class="input input-bordered"
+                    placeholder="Your email address?"
+                    class="input input-bordered text-center"
                 />
             </div>
             <div class="form-control">
@@ -33,8 +29,8 @@
                 </label>
                 <input
                     type="text"
-                    placeholder="password"
-                    class="input input-bordered"
+                    placeholder="Your password?"
+                    class="input input-bordered text-center"
                 />
                 <!-- svelte-ignore a11y-label-has-associated-control -->
                 <label class="label">
