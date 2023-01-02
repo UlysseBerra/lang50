@@ -1,6 +1,10 @@
 package net.lang50.server.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ext.SqlBlobSerializer;
 import jakarta.persistence.*;
+
+import java.sql.Blob;
 
 @Entity
 @Table(name = "languages")
@@ -14,17 +18,19 @@ public class Language {
 
     @Column(name = "audio")
     @Lob
-    private byte[] audio;
+    @JsonSerialize(using = SqlBlobSerializer.class)
+    private Blob audio;
 
     @Column(name = "script")
     @Lob
-    private byte[] script;
+    @JsonSerialize(using = SqlBlobSerializer.class)
+    private Blob script;
 
     public Language() {
 
     }
 
-    public Language(String name, byte[] audio, byte[] script) {
+    public Language(String name, Blob audio, Blob script) {
         this.name = name;
         this.audio = audio;
         this.script = script;
@@ -46,19 +52,19 @@ public class Language {
         this.name = name;
     }
 
-    public byte[] getAudio() {
+    public Blob getAudio() {
         return audio;
     }
 
-    public void setAudio(byte[] audio) {
+    public void setAudio(Blob audio) {
         this.audio = audio;
     }
 
-    public byte[] getScript() {
+    public Blob getScript() {
         return script;
     }
 
-    public void setScript(byte[] script) {
+    public void setScript(Blob script) {
         this.script = script;
     }
 
