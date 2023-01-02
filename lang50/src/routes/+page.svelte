@@ -17,11 +17,12 @@
         </span>
     </h1>
 
-    <p>
-        You know what <code>lang50</code> is, right? Well, if you don't, here is
-        a blurb: lorem ipsum tralala lorem ipsum tralala lorem ipsum tralala lorem
-        ipsum tralala lorem ipsum tralala lorem ipsum tralala lorem ipsum tralala
-        lorem ipsum tralala lorem ipsum tralala lorem ipsum tralala lorem ipsum tralala
-        lorem ipsum tralala.
+    <p class="text-center">
+        The <code>lang50</code> project is a joint venture of Ulysse Berra and Aurélien
+        Berra.
+    </p>
+    <p class="text-center">
+        It serves as our Harvard CS50x final project, and modestly aims at
+        changing the world – one nerdy game at a time.
     </p>
 </section>
