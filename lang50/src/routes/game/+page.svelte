@@ -1,13 +1,15 @@
-<script>
+<script lang="ts">
     let scripts = 1;
 
-    import AudioPlayer from "$lib/components/AudioPlayer.svelte";
-    import idontunderstand_el from "$lib/audio/idontunderstand_el.mp3";
-    let audioTrack = idontunderstand_el;
-
-    import encoded from "$lib/audio/test_audio.json";
-    const audio = encoded.audio;
-    const test = `data:audio/mp3;base64,${audio}`;
+    // --- Importing audio from base64 encoding in API
+    import { onMount } from "svelte";
+    // using the endpoint for an object, not for the whole array
+    const api_endpoint = "http://localhost:8080/languages/1";
+    export let data_api: any = [];
+    onMount(async function () {
+        const response = await fetch(api_endpoint);
+        data_api = await response.json();
+    });
 
     import runes from "$lib/images/runes.png";
     import greek_modern from "$lib/images/greek_modern.png";
@@ -41,13 +43,15 @@
 
     <h2 class="mt-12">Audio: listen!</h2>
 
-    <h3 class="mt-6 text-center">From MP3 file</h3>
-    <AudioPlayer src={audioTrack} />
-
-    <h3 class="mt-6 text-center">From base64 encoding in JSON file</h3>
-    <audio controls preload="metadata">
-        <source src={test} type="audio/mp3" />
-    </audio>
+    <div>
+        {#await data_api then d}
+            <audio
+                controls
+                preload="metadata"
+                src={`data:audio/mp3;base64,${d.audio}`}
+            />
+        {/await}
+    </div>
 
     <!-- <h2>Scripts as text</h2>
 

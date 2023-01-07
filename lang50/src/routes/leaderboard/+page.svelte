@@ -1,5 +1,4 @@
 <script>
-
     const fetchTestData = (async () => {
         const response = await fetch("src/lib/users/test_users.json");
         let test_data = await response.json();
