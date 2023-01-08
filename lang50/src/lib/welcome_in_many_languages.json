@@ -2,246 +2,217 @@
     {
         "id": "01",
         "language": "Afrikaans",
-        "welcome": "Welkom",
-        "checked": "no"
+        "welcome": "Welkom"
     },
     {
         "id": "02",
         "language": "Ancient Greek",
-        "welcome": "Ἀσπάζομαι",
-        "checked": "no"
+        "welcome": "Χαῖρε"
     },
     {
         "id": "03",
         "language": "Arabic",
-        "welcome": "أهلاً و سهلاً",
-        "checked": "no"
+        "welcome": "أهلًا وسهلًا",
+        "note": "fix RTL"
     },
     {
         "id": "04",
         "language": "Bengali",
         "welcome": "স্বাগতম",
-        "checked": "no"
+        "note": "check characters"
     },
     {
         "id": "05",
         "language": "Cantonese Chinese",
-        "welcome": "歡迎",
-        "checked": "no"
+        "welcome": "歡迎"
     },
     {
         "id": "06",
         "language": "Classical Latin",
-        "welcome": "Salve",
-        "checked": "no"
+        "welcome": "Salve"
     },
-    { "id": "07", "language": "Czech", "welcome": "Vítej", "checked": "no" },
+    { "id": "07", "language": "Czech", "welcome": "Vítej" },
     {
         "id": "08",
         "language": "Danish",
-        "welcome": "Velkommen",
-        "checked": "no"
+        "welcome": "Velkommen"
     },
-    { "id": "09", "language": "Dutch", "welcome": "Welkom", "checked": "no" },
+    { "id": "09", "language": "Dutch", "welcome": "Welkom" },
     {
         "id": "10",
         "language": "Farsi",
         "welcome": "خوش آمدید",
-        "checked": "no"
+        "note": "fix RTL"
     },
     {
         "id": "11",
         "language": "French",
-        "welcome": "Bienvenue",
-        "checked": "no"
+        "welcome": "Bienvenue"
     },
     {
         "id": "12",
         "language": "German",
-        "welcome": "Willkommen",
-        "checked": "no"
+        "welcome": "Willkommen"
     },
     {
         "id": "13",
         "language": "Hebrew",
         "welcome": "ברוך הבא",
-        "checked": "no"
+        "note": "fix RTL"
     },
-    { "id": "14", "language": "Hindi", "welcome": "स्वागत", "checked": "no" },
+    { "id": "14", "language": "Hindi", "welcome": "स्वागत है", "note": "check characters" },
     {
         "id": "15",
         "language": "Indonesian",
-        "welcome": "Selamat datang",
-        "checked": "no"
+        "welcome": "Selamat datang"
     },
     {
         "id": "16",
         "language": "Italian",
-        "welcome": "Benvenuto·a",
-        "checked": "no"
+        "welcome": "Benvenuto·a"
     },
     {
         "id": "17",
         "language": "Japanese",
-        "welcome": "ようこそ",
-        "checked": "no"
+        "welcome": "ようこそ"
     },
     {
         "id": "18",
         "language": "Kannada",
-        "welcome": "ಸುಸ್ವಾಗತ",
-        "checked": "no"
+        "welcome": "ಸ್ವಾಗತ",
+        "note": "check characters"
     },
     {
         "id": "19",
         "language": "Khmer",
-        "welcome": "សូម​ស្វាគមន៍",
-        "checked": "no"
+        "welcome": "សូមស្វាគមន៍"
     },
     {
         "id": "20",
         "language": "Malayalam",
         "welcome": "സ്വാഗതം",
-        "checked": "no"
+        "note": "check characters"
     },
     {
         "id": "21",
         "language": "Mandarin Chinese",
-        "welcome": "歡迎光臨",
-        "checked": "no"
+        "welcome": "歡迎"
     },
     {
         "id": "22",
         "language": "Marathi",
-        "welcome": "तुमचं स्वागत असो",
-        "checked": "no"
+        "welcome": "स्वागत",
+        "note": "check characters"
     },
     {
         "id": "23",
         "language": "Modern Greek",
-        "welcome": "Καλώς Ορίσατε",
-        "checked": "no"
+        "welcome": "Καλώς ήρθες"
     },
     {
         "id": "24",
         "language": "Nigerian Pidgin",
-        "welcome": "?",
-        "checked": "no"
+        "welcome": "Welcome"
     },
     {
         "id": "25",
         "language": "Norwegian",
-        "welcome": "Velkommen",
-        "checked": "no"
+        "welcome": "Velkommen"
     },
     {
         "id": "26",
         "language": "Polish",
-        "welcome": "Witam Cię",
-        "checked": "no"
+        "welcome": "Witam Cię"
     },
     {
         "id": "27",
         "language": "Portuguese",
-        "welcome": "Bem-vindo·a",
-        "checked": "no"
+        "welcome": "Bem-vindo·a"
     },
     {
         "id": "28",
         "language": "Punjabi",
-        "welcome": "ਜੀ ਆਇਆ ਨੂੰ।",
-        "checked": "no"
+        "welcome": "ਜੀ ਆਇਆ ਨੂੰ।"
     },
     {
         "id": "29",
         "language": "Romanian",
-        "welcome": "Bine ați venit",
-        "checked": "no"
+        "welcome": "Bine ați venit"
     },
     {
         "id": "30",
         "language": "Russian",
-        "welcome": "Добро пожаловать",
-        "checked": "no"
+        "welcome": "Добро пожаловать"
     },
     {
         "id": "31",
         "language": "Sanskrit",
-        "welcome": "स्वागतम्",
-        "checked": "no"
+        "welcome": "स्वागतम",
+        "note": "check characters"
     },
-    { "id": "32", "language": "Slovak", "welcome": "Vitaj", "checked": "no" },
+    { "id": "32", "language": "Slovak", "welcome": "Vitaj" },
     {
         "id": "33",
         "language": "Spanish",
-        "welcome": "Bienvenido·a",
-        "checked": "no"
+        "welcome": "Bienvenido·a"
     },
     {
         "id": "34",
         "language": "Swedish",
-        "welcome": "Välkommen",
-        "checked": "no"
+        "welcome": "Välkommen"
     },
     {
         "id": "35",
         "language": "Tamil",
-        "welcome": "வாருங்கள்",
-        "checked": "no"
+        "welcome": "வருக"
     },
     {
         "id": "36",
         "language": "Telugu",
-        "welcome": "సుస్వాగతం",
-        "checked": "no"
+        "welcome": "స్వాగతం",
+        "note": "check characters"
     },
     {
         "id": "37",
         "language": "Thai",
-        "welcome": "ยินดีต้อนรับ",
-        "checked": "no"
+        "welcome": "ต้อนรับ",
+        "note": "check characters"
     },
     {
         "id": "38",
         "language": "Turkish",
-        "welcome": "Hoş geldin",
-        "checked": "no"
+        "welcome": "Hoş geldin"
     },
     {
         "id": "39",
         "language": "Ukranian",
-        "welcome": "Ласкаво просимо",
-        "checked": "no"
+        "welcome": "Ласкаво просимо"
     },
     {
         "id": "40",
         "language": "Vietnamese",
-        "welcome": "Được tiếp đãi ân cần",
-        "checked": "no"
+        "welcome": "Được tiếp đãi ân cần"
     },
     {
         "id": "41",
         "language": "Esperanto",
-        "welcome": "Bonvenon",
-        "checked": "no"
+        "welcome": "Bonvenon"
     },
-    { "id": "42", "language": "Toki Pona", "welcome": "?", "checked": "no" },
-    { "id": "43", "language": "Klingon", "welcome": "?", "checked": "no" },
+    { "id": "42", "language": "Toki Pona", "welcome": "Kama pona" },
+    { "id": "43", "language": "Klingon", "welcome": "yI'el" },
     {
         "id": "44",
         "language": "Quenya",
-        "welcome": "Alatulya",
-        "checked": "no"
+        "welcome": "Alatulya"
     },
     {
         "id": "45",
         "language": "High Valyrian",
-        "welcome": "?",
-        "checked": "no"
+        "welcome": "Jiōrna"
     },
-    { "id": "46", "language": "Na'vi", "welcome": "?", "checked": "no" },
-    { "id": "47", "language": "Oqolaawak", "welcome": "?", "checked": "no" },
-    { "id": "48", "language": "Nekāchti", "welcome": "?", "checked": "no" },
-    { "id": "49", "language": "Edun", "welcome": "?", "checked": "no" },
-    { "id": "50", "language": "Ilothwii", "welcome": "?", "checked": "no" }
+    { "id": "46", "language": "Na'vi", "welcome": "Kaltxì" },
+    { "id": "47", "language": "Oqolaawak", "welcome": "?" },
+    { "id": "48", "language": "Nekāchti", "welcome": "?" },
+    { "id": "49", "language": "Edun", "welcome": "?" },
+    { "id": "50", "language": "Ilothwii", "welcome": "?" }
 ]
