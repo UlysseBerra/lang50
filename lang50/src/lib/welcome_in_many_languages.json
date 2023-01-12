@@ -60,7 +60,12 @@
         "welcome": "ברוך הבא",
         "note": "fix RTL"
     },
-    { "id": "14", "language": "Hindi", "welcome": "स्वागत है", "note": "check characters" },
+    {
+        "id": "14",
+        "language": "Hindi",
+        "welcome": "स्वागत है",
+        "note": "check characters"
+    },
     {
         "id": "15",
         "language": "Indonesian",
@@ -211,8 +216,8 @@
         "welcome": "Jiōrna"
     },
     { "id": "46", "language": "Na'vi", "welcome": "Kaltxì" },
-    { "id": "47", "language": "Oqolaawak", "welcome": "?" },
-    { "id": "48", "language": "Nekāchti", "welcome": "?" },
-    { "id": "49", "language": "Edun", "welcome": "?" },
-    { "id": "50", "language": "Ilothwii", "welcome": "?" }
+    { "id": "47", "language": "", "welcome": "?" },
+    { "id": "48", "language": "", "welcome": "?" },
+    { "id": "49", "language": "", "welcome": "?" },
+    { "id": "50", "language": "", "welcome": "?" }
 ]
