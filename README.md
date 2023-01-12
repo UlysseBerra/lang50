@@ -71,90 +71,75 @@ We use the following technologies:
     -   provide the option to exclude specific languages, e.g. the user's native language
 
 -   Languages (50 in total, as in `lang50`?)
-    -   natural languages
+    -   natural languages (44, including 2 ancient)
         -   Indo-European
             -   Germanic
+                -   Afrikaans
+                -   Danish
+                -   Dutch
+                -   English
+                -   German
                 -   Norwegian
                 -   Swedish
-                -   Danish
-                -   German
-                -   Dutch
-                -   Afrikaans
             -   Latin
-                -   French
                 -   Classical Latin
-                -   Spanish
+                -   French
                 -   Italian
-                -   Romanian
                 -   Portuguese
+                -   Romanian
+                -   Spanish
             -   Indo-Iranian
-                -   Sanskrit
+                -   Bengali
                 -   Farsi
                 -   Hindi
-                -   Punjabi
                 -   Marathi
-                -   Bengali
+                -   Punjabi
+                -   Sanskrit
+                -   Urdu
             -   Hellenic
                 -   Ancient Greek
                 -   Modern Greek
             -   Slavic
-                -   Russian
                 -   Czech
+                -   Polish
+                -   Russian
                 -   Slovak
                 -   Ukranian
-                -   Polish
         -   Dravidian
+            -   Kannada
             -   Malayalam
             -   Tamil
             -   Telugu
-            -   Kannada
         -   Sino-Tibetan
-            -   Mandarin Chinese
             -   Cantonese Chinese
-        -   Niger-Congo
+            -   Mandarin Chinese
         -   Austronesian
             -   Indonesian
-        -   Uralic
         -   Afro-Asiatic
             -   Arabic
             -   Hebrew
-        -   Trans-New Guinea
-        -   Nigerian Pidgin
-            @TODO reorder below
-        -   Vietnamese
-        -   Japanese
-        -   Turkish
-        -   Thai
-        -   Khmer
-    -   @REFERENCE Top 20 most spoken languages (Ethnologue, 2022)
-        -   English (1.5 B)
-        -   Mandarin Chinese (1.1 B)
-        -   Hindi (602.2 M)
-        -   Spanish (548.3 M)
-        -   French (274.1 M)
-        -   Standard Arabic (274.0 M)
-        -   Bengali (272.7 M)
-        -   Russian (258.2 M)
-        -   Portuguese (257.7 M)
-        -   Urdu (231.3 M)
-        -   Indonesian (199.0 M)
-        -   Standard German (134.6 M)
-        -   Japanese (125.4 M)
-        -   Nigerian Pidgin (120.7 M)
-        -   Marathi (99.1 M)
-        -   Telugu (95.7 M)
-        -   Turkish (88.1 M)
-        -   Tamil (86.4 M)
-        -   Yue Chinese (85.6 M)
-        -   Vietnamese (85.3 M)
-    -   constructed languages (10)
+        -   @TODO classify languages below
+            -   Basque
+            -   Georgian
+            -   Japanese
+            -   Khmer
+            -   Nigerian Pidgin
+            -   Thai
+            -   Turkish
+            -   Vietnamese
+        -   archive: language groups not represented
+            -   Niger-Congo
+            -   Uralic
+            -   Trans-New Guinea
+    -   constructed languages (6)
         -   Esperanto
-        -   Toki Pona
-        -   Klingon (_Star Trek_)
-        -   Quenya (Tolkien)
         -   High Valyrian (_Game of Thrones_)
+        -   Klingon (_Star Trek_)
         -   Na'vi (_Avatar_)
-        -   Oqolaawak ([Biblaridion](https://www.youtube.com/channel/UCMjTcpv56G_W0FRIdPHBn4A))
-        -   Nekāchti ([Biblaridion](https://www.youtube.com/channel/UCMjTcpv56G_W0FRIdPHBn4A))
-        -   Edun ([Biblaridion](https://www.youtube.com/channel/UCMjTcpv56G_W0FRIdPHBn4A))
-        -   Ilothwii ([Biblaridion](https://www.youtube.com/channel/UCMjTcpv56G_W0FRIdPHBn4A))
+        -   Quenya (Tolkien)
+        -   Toki Pona
+        -   archive: constructed languages for which data are insufficient
+            -   Oqolaawak ([Biblaridion](https://www.youtube.com/channel/UCMjTcpv56G_W0FRIdPHBn4A))
+            -   Nekāchti ([Biblaridion](https://www.youtube.com/channel/UCMjTcpv56G_W0FRIdPHBn4A))
+            -   Edun ([Biblaridion](https://www.youtube.com/channel/UCMjTcpv56G_W0FRIdPHBn4A))
+            -   Ilothwii ([Biblaridion](https://www.youtube.com/channel/UCMjTcpv56G_W0FRIdPHBn4A))
