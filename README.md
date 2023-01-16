@@ -71,7 +71,7 @@ We use the following technologies:
     -   provide the option to exclude specific languages, e.g. the user's native language
 
 -   Languages (50 in total, as in `lang50`?)
-    -   natural languages (44, including 2 ancient)
+    -   natural languages (44, including 3 ancient)
         -   Indo-European
             -   Germanic
                 -   Afrikaans
