@@ -4,9 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
-audio,
 picture {
     display: inline;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+audio {
     margin-left: auto;
     margin-right: auto;
 }
@@ -45,14 +49,14 @@ p {
     line-height: 1.5;
 } */
 
-/* a {
-    color: var(--color-theme-1);
+a {
+    color: #ff3e00; /* var(--color-theme-1); */
     text-decoration: none;
-} */
+}
 
-/* a:hover {
+a:hover {
     text-decoration: underline;
-} */
+}
 
 h1 {
     font-size: 2rem;
