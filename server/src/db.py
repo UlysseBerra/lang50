@@ -15,24 +15,67 @@ def initialize_database():
         )
     ''')
 
+    # Create a revoked_tokens table
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS revoked_tokens (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            token TEXT UNIQUE
+        )
+    ''')
+
     conn.commit()
     conn.close()
+
+def revoke_refresh_token(refresh_token):
+    conn = sqlite3.connect('../database.db')
+    cursor = conn.cursor()
+
+    cursor.execute('''
+        INSERT INTO revoked_tokens (token) VALUES (?)
+    ''', (refresh_token,))
+
+    conn.commit()
+    conn.close()
+
+def is_refresh_token_revoked(refresh_token):
+    conn = sqlite3.connect('../database.db')
+    cursor = conn.cursor()
+
+    cursor.execute('''
+        SELECT EXISTS (SELECT 1 FROM revoked_tokens WHERE token=?)
+    ''', (refresh_token,))
+
+    result = cursor.fetchone()
+    conn.close()
+
+    return result[0] == 1
 
 def register_user(username, email, password):
     conn = sqlite3.connect('../database.db')
     cursor = conn.cursor()
 
-    # Hash the password
-    hashed_password = bcrypt.hash(password)
+    try:
+        # Hash the password
+        hashed_password = bcrypt.hash(password)
 
-    # Insert the user data into the database
-    cursor.execute('''
-        INSERT INTO users (username, email, password)
-        VALUES (?, ?, ?)
-    ''', (username, email, hashed_password))
+        # Insert the user data into the database
+        cursor.execute('''
+            INSERT INTO users (username, email, password)
+            VALUES (?, ?, ?)
+        ''', (username, email, hashed_password))
 
-    conn.commit()
-    conn.close()
+        conn.commit()
+        conn.close()
+    except sqlite3.IntegrityError as e:
+        conn.close()
+        error_message = str(e)
+
+        if "UNIQUE constraint failed: users.username" in error_message:
+            return "Username already in use."
+        elif "UNIQUE constraint failed: users.email" in error_message:
+            return "Email already in use."
+    
+    return "User registered successfully."
 
 def verify_user(username, password):
     conn = sqlite3.connect('../database.db')

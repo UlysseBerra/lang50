@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 import uvicorn
-from db import initialize_database
-from routes import router
+from src.db import initialize_database
+from src.routes import router
 
 app = FastAPI()
 
