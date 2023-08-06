@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "name": "Leanne Graham",
+        "username": "leanne",
+        "score": "1001"
+    },
+    {
+        "id": 2,
+        "name": "Ervin Howell",
+        "username": "ervin",
+        "score": "901"
+    },
+    {
+        "id": 3,
+        "name": "Clementine Bauch",
+        "username": "clementine",
+        "score": "801"
+    },
+    {
+        "id": 4,
+        "name": "Patricia Lebsack",
+        "username": "patricia",
+        "score": "701"
+    },
+    {
+        "id": 5,
+        "name": "Chelsey Dietrich",
+        "username": "chelsey",
+        "score": "601"
+    },
+    {
+        "id": 6,
+        "name": "Mrs. Dennis Schulist",
+        "username": "dennis",
+        "score": "501"
+    },
+    {
+        "id": 7,
+        "name": "Kurtis Weissnat",
+        "username": "kurtis",
+        "score": "401"
+    },
+    {
+        "id": 8,
+        "name": "Nicholas Runolfsdottir V",
+        "username": "nicholas",
+        "score": "301"
+    },
+    {
+        "id": 9,
+        "name": "Glenna Reichert",
+        "username": "glenna",
+        "score": "201"
+    },
+    {
+        "id": 10,
+        "name": "Clementina DuBuque",
+        "username": "clementina",
+        "score": "101"
+    }
+]
