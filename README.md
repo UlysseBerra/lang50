@@ -61,7 +61,6 @@ We use the following technologies:
 ## Specifications
 
 * Defining features
-
     * foreground association of oral and written forms of the languages: instead of recognizing the language being spoken, the user must choose the correct transcription in the original script out of a number of options
     * include constructed languages, on top of natural languages
     * include language variants: dialects, accents, historical forms [to be further defined]
@@ -70,7 +69,7 @@ We use the following technologies:
     * add life refill mechanism: after 5 consecutive correct answers, 1 life gets refilled out of initial 3
     * provide the option to exclude specific languages, e.g. the user's native language
 
-* Languages (50 in total, as in `lang50`?)
+* Languages: first list (50 in total, as in `lang50`?)
     * natural languages (44, including 3 ancient)
         * Indo-European
             * Germanic
@@ -78,27 +77,28 @@ We use the following technologies:
                 * Danish · dan | [Ethnologue](http://www.ethnologue.com/language/dan/) · [ISO](http://https//iso639-3.sil.org/code/dan) · [UDHR txt](https://unicode.org/udhr/d/udhr_dan.txt)
                 * Dutch · nld | [Ethnologue](http://www.ethnologue.com/language/nld/) · [ISO](http://https//iso639-3.sil.org/code/nld) · [UDHR txt](https://unicode.org/udhr/d/udhr_nld.txt)
                 * English · eng | [Ethnologue](http://www.ethnologue.com/language/eng/) · [ISO](http://https//iso639-3.sil.org/code/eng) · [UDHR txt](https://unicode.org/udhr/d/udhr_eng.txt)
-                * German · deu | [Ethnologue](http://www.ethnologue.com/language/deu/) · [ISO](http://https//iso639-3.sil.org/code/deu) · [UDHR txt](https://unicode.org/udhr/d/udhr_deu.txt)
+                * German · deu | [Ethnologue](http://www.ethnologue.com/language/deu/) · [ISO](http://https//iso639-3.sil.org/code/deu) · [UDHR txt](https://unicode.org/udhr/d/udhr_deu_1996.txt) [fix inconsistent use of ß/ss?]
                 * Norwegian · nob | [Ethnologue](http://www.ethnologue.com/language/nob/) · [ISO](http://https//iso639-3.sil.org/code/nob) · [UDHR txt](https://unicode.org/udhr/d/udhr_nob.txt)
                 * Swedish · swe | [Ethnologue](http://www.ethnologue.com/language/swe/) · [ISO](http://https//iso639-3.sil.org/code/swe) · [UDHR txt](https://unicode.org/udhr/d/udhr_swe.txt)
             * Latin
                 * Classical Latin · lat | [Ethnologue](http://www.ethnologue.com/language/lat/) · [ISO](http://https//iso639-3.sil.org/code/lat) · [UDHR txt](https://unicode.org/udhr/d/udhr_lat.txt)
                 * French · fra | [Ethnologue](http://www.ethnologue.com/language/fra/) · [ISO](http://https//iso639-3.sil.org/code/fra) · [UDHR txt](https://unicode.org/udhr/d/udhr_fra.txt)
                 * Italian · ita | [Ethnologue](http://www.ethnologue.com/language/ita/) · [ISO](http://https//iso639-3.sil.org/code/ita) · [UDHR txt](https://unicode.org/udhr/d/udhr_ita.txt)
-                * Portuguese · por | [Ethnologue](http://www.ethnologue.com/language/por/) · [ISO](http://https//iso639-3.sil.org/code/por) · [UDHR txt](https://unicode.org/udhr/d/udhr_por.txt)
-                * Romanian · ron | [Ethnologue](http://www.ethnologue.com/language/ron/) · [ISO](http://https//iso639-3.sil.org/code/ron) · [UDHR txt](https://unicode.org/udhr/d/udhr_ron.txt)
+                * Portuguese (Portugal) · por_PT | [Ethnologue](http://www.ethnologue.com/language/por/) · [ISO](http://https//iso639-3.sil.org/code/por) · [UDHR txt](https://unicode.org/udhr/d/udhr_por_PT.txt)
+                * Portuguese (Brazil) · por_BR | [Ethnologue](http://www.ethnologue.com/language/por/) · [ISO](http://https//iso639-3.sil.org/code/por) · [UDHR txt](https://unicode.org/udhr/d/udhr_por_BR.txt)
+                * Romanian · ron | [Ethnologue](http://www.ethnologue.com/language/ron/) · [ISO](http://https//iso639-3.sil.org/code/ron) · [UDHR txt](https://unicode.org/udhr/d/udhr_ron_2006.txt)
                 * Spanish · spa | [Ethnologue](http://www.ethnologue.com/language/spa/) · [ISO](http://https//iso639-3.sil.org/code/spa) · [UDHR txt](https://unicode.org/udhr/d/udhr_spa.txt)
             * Indo-Iranian
                 * Bengali · ben | [Ethnologue](http://www.ethnologue.com/language/ben/) · [ISO](http://https//iso639-3.sil.org/code/ben) · [UDHR txt](https://unicode.org/udhr/d/udhr_ben.txt)
-                * Farsi · pes | [Ethnologue](http://www.ethnologue.com/language/pes/) · [ISO](http://https//iso639-3.sil.org/code/pes) · [UDHR txt](https://unicode.org/udhr/d/udhr_pes.txt)
+                * Farsi · pes | [Ethnologue](http://www.ethnologue.com/language/pes/) · [ISO](http://https//iso639-3.sil.org/code/pes) · [UDHR txt](https://unicode.org/udhr/d/udhr_pes_1.txt)
                 * Hindi · hin | [Ethnologue](http://www.ethnologue.com/language/hin/) · [ISO](http://https//iso639-3.sil.org/code/hin) · [UDHR txt](https://unicode.org/udhr/d/udhr_hin.txt)
                 * Marathi · mar | [Ethnologue](http://www.ethnologue.com/language/mar/) · [ISO](http://https//iso639-3.sil.org/code/mar) · [UDHR txt](https://unicode.org/udhr/d/udhr_mar.txt)
                 * Punjabi · pnb | [Ethnologue](http://www.ethnologue.com/language/pnb/) · [ISO](http://https//iso639-3.sil.org/code/pnb) · [UDHR txt](https://unicode.org/udhr/d/udhr_pnb.txt)
                 * Sanskrit · san | [Ethnologue](http://www.ethnologue.com/language/san/) · [ISO](http://https//iso639-3.sil.org/code/san) · [UDHR txt](https://unicode.org/udhr/d/udhr_san.txt)
                 * Urdu · urd | [Ethnologue](http://www.ethnologue.com/language/urd/) · [ISO](http://https//iso639-3.sil.org/code/urd) · [UDHR txt](https://unicode.org/udhr/d/udhr_urd.txt)
             * Hellenic
-                * Ancient Greek · grc @find-source | [Ethnologue](http://www.ethnologue.com/language/source/) · [ISO](http://https//iso639-3.sil.org/code/source) · [UDHR txt](https://unicode.org/udhr/d/udhr_source.txt)
-                * Modern Greek · ell | [Ethnologue](http://www.ethnologue.com/language/ell/) · [ISO](http://https//iso639-3.sil.org/code/ell) · [UDHR txt](https://unicode.org/udhr/d/udhr_ell.txt)
+                * Ancient Greek · grc @find-source | [Ethnologue](http://www.ethnologue.com/language/grc/) · [ISO](http://https//iso639-3.sil.org/code/grc) · [UDHR txt](https://unicode.org/udhr/d/udhr_grc.txt)
+                * Modern Greek · ell | [Ethnologue](http://www.ethnologue.com/language/ell/) · [ISO](http://https//iso639-3.sil.org/code/ell) · [UDHR txt](https://unicode.org/udhr/d/udhr_ell_monotonic.txt)
             * Slavic
                 * Czech · ces | [Ethnologue](http://www.ethnologue.com/language/ces/) · [ISO](http://https//iso639-3.sil.org/code/ces) · [UDHR txt](https://unicode.org/udhr/d/udhr_ces.txt)
                 * Polish · pol | [Ethnologue](http://www.ethnologue.com/language/pol/) · [ISO](http://https//iso639-3.sil.org/code/pol) · [UDHR txt](https://unicode.org/udhr/d/udhr_pol.txt)
@@ -112,7 +112,7 @@ We use the following technologies:
             * Telugu · tel | [Ethnologue](http://www.ethnologue.com/language/tel/) · [ISO](http://https//iso639-3.sil.org/code/tel) · [UDHR txt](https://unicode.org/udhr/d/udhr_tel.txt)
         * Sino-Tibetan
             * Cantonese Chinese · yue | [Ethnologue](http://www.ethnologue.com/language/yue/) · [ISO](http://https//iso639-3.sil.org/code/yue) · [UDHR txt](https://unicode.org/udhr/d/udhr_yue.txt)
-            * Mandarin Chinese · cmn | [Ethnologue](http://www.ethnologue.com/language/cmn/) · [ISO](http://https//iso639-3.sil.org/code/cmn) · [UDHR txt](https://unicode.org/udhr/d/udhr_cmn.txt)
+            * Mandarin Chinese · cmn | [Ethnologue](http://www.ethnologue.com/language/cmn/) · [ISO](http://https//iso639-3.sil.org/code/cmn) · [UDHR txt](https://unicode.org/udhr/d/udhr_cmn_hant.txt)
         * Austronesian
             * Indonesian · ind | [Ethnologue](http://www.ethnologue.com/language/ind/) · [ISO](http://https//iso639-3.sil.org/code/ind) · [UDHR txt](https://unicode.org/udhr/d/udhr_ind.txt)
         * Afro-Asiatic
@@ -143,3 +143,6 @@ We use the following technologies:
             * Nekāchti ([Biblaridion](https://www.youtube.com/channel/UCMjTcpv56G_W0FRIdPHBn4A))
             * Edun ([Biblaridion](https://www.youtube.com/channel/UCMjTcpv56G_W0FRIdPHBn4A))
             * Ilothwii ([Biblaridion](https://www.youtube.com/channel/UCMjTcpv56G_W0FRIdPHBn4A))
+
+* Languages: selected audio samples from Omniglot, Article 1 of the Universal Declaration of Human Rights (UDHR)
+    * see list in files
