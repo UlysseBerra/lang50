@@ -95,3 +95,36 @@ def verify_user(username, password):
 
     conn.close()
     return None
+
+def is_email_registered(email):
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+
+    cursor.execute('SELECT id FROM users WHERE email=?', (email,))
+    user_id = cursor.fetchone()
+
+    conn.close()
+
+    return user_id is not None
+
+def get_user_id_by_email(email):
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+
+    cursor.execute('SELECT id FROM users WHERE email=?', (email,))
+    user_id = cursor.fetchone()
+
+    conn.close()
+
+    return user_id[0] if user_id else None
+
+def update_user_password(user_id, new_password):
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+
+    hashed_password = bcrypt.hash(new_password)
+
+    cursor.execute('UPDATE users SET password=? WHERE id=?', (hashed_password, user_id))
+
+    conn.commit()
+    conn.close()
