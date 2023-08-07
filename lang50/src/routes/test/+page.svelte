@@ -9,6 +9,7 @@
     // import AudioControls from "$lib/components/AudioControls.svelte";
     // import AudioPlayer from "$lib/components/AudioPlayer.svelte";
     import idontunderstand_el from "$lib/audio/idontunderstand_el.mp3";
+    import udhr_001 from "$lib/udhr_audio/001.mp3";
 
     // --- Importing audio from base64 encoding in JSON file
     import test_json from "$lib/audio/test_audio.json";
@@ -34,6 +35,23 @@
 <div class="text-column">
     <h1>Test page</h1>
 </div>
+
+<h2 class="w-fit place-self-center mt-20">
+    Importing audio from online audio file
+</h2>
+<audio controls preload="metadata">
+    <source
+        src="https://www.omniglot.com/soundfiles/udhr/udhr_so.mp3"
+        type="audio/mp3"
+    />
+</audio>
+
+<h2 class="w-fit place-self-center mt-20">
+    Importing audio from local audio file
+</h2>
+<audio controls preload="metadata">
+    <source src={udhr_001} type="audio/mp3" />
+</audio>
 
 <h2 class="w-fit place-self-center mt-20">Importing audio from MP3 file</h2>
 <audio controls preload="metadata">
