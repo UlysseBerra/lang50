@@ -4,12 +4,15 @@ from passlib.hash import bcrypt
 from datetime import datetime, timedelta
 from jose import jwt, JWTError
 from pydantic import BaseModel
-from os import environ
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # JWT Configurations
-ACCESS_TOKEN_SECRET_KEY = environ.get("ACCESS_SECRET")
-REFRESH_TOKEN_SECRET_KEY = environ.get("REFRESH_SECRET")
-RESET_TOKEN_SECRET_KEY = environ.get("RESET_SECRET")
+ACCESS_TOKEN_SECRET_KEY = os.getenv("ACCESS_SECRET")
+REFRESH_TOKEN_SECRET_KEY = os.getenv("REFRESH_SECRET")
+RESET_TOKEN_SECRET_KEY = os.getenv("RESET_SECRET")
 
 ALGORITHM = "HS256"
 
@@ -18,7 +21,7 @@ REFRESH_TOKEN_EXPIRE_DAYS = 30
 RESET_TOKEN_EXPIRE_HOURS = 1
 
 class ResetTokenData(BaseModel):
-    sub: int
+    sub: str
 
 def get_user_id_from_token(token: str = Depends(OAuth2PasswordBearer(tokenUrl="token"))):
     try:
@@ -51,7 +54,7 @@ def decode_refresh_token(token: str):
         return None
 
 def create_reset_token(data: dict):
-    to_encode = ResetTokenData(**data).dict()
+    to_encode = ResetTokenData(**data).model_dump()
     expire = datetime.utcnow() + timedelta(hours=RESET_TOKEN_EXPIRE_HOURS)
     to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(to_encode, RESET_TOKEN_SECRET_KEY, algorithm=ALGORITHM)
