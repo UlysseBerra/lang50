@@ -2,7 +2,7 @@ import sqlite3
 from passlib.hash import bcrypt
 
 def initialize_database():
-    conn = sqlite3.connect('../database.db')
+    conn = sqlite3.connect('./database.db')
     cursor = conn.cursor()
 
     # Create a users table
@@ -27,7 +27,7 @@ def initialize_database():
     conn.close()
 
 def revoke_refresh_token(refresh_token):
-    conn = sqlite3.connect('../database.db')
+    conn = sqlite3.connect('./database.db')
     cursor = conn.cursor()
 
     cursor.execute('''
@@ -38,7 +38,7 @@ def revoke_refresh_token(refresh_token):
     conn.close()
 
 def is_refresh_token_revoked(refresh_token):
-    conn = sqlite3.connect('../database.db')
+    conn = sqlite3.connect('./database.db')
     cursor = conn.cursor()
 
     cursor.execute('''
@@ -51,7 +51,7 @@ def is_refresh_token_revoked(refresh_token):
     return result[0] == 1
 
 def register_user(username, email, password):
-    conn = sqlite3.connect('../database.db')
+    conn = sqlite3.connect('./database.db')
     cursor = conn.cursor()
 
     try:
@@ -78,7 +78,7 @@ def register_user(username, email, password):
     return "User registered successfully."
 
 def verify_user(username, password):
-    conn = sqlite3.connect('../database.db')
+    conn = sqlite3.connect('./database.db')
     cursor = conn.cursor()
 
     # Retrieve the user data from the database
@@ -97,7 +97,7 @@ def verify_user(username, password):
     return None
 
 def is_email_registered(email):
-    conn = sqlite3.connect('../database.db')
+    conn = sqlite3.connect('./database.db')
     cursor = conn.cursor()
 
     cursor.execute('SELECT id FROM users WHERE email=?', (email,))
@@ -108,7 +108,7 @@ def is_email_registered(email):
     return user_id is not None
 
 def get_user_id_by_email(email):
-    conn = sqlite3.connect('../database.db')
+    conn = sqlite3.connect('./database.db')
     cursor = conn.cursor()
 
     cursor.execute('SELECT id FROM users WHERE email=?', (email,))
@@ -119,7 +119,7 @@ def get_user_id_by_email(email):
     return user_id[0] if user_id else None
 
 def update_user_password(user_id, new_password):
-    conn = sqlite3.connect('../database.db')
+    conn = sqlite3.connect('./database.db')
     cursor = conn.cursor()
 
     hashed_password = bcrypt.hash(new_password)
