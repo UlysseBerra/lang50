@@ -9,11 +9,11 @@ app = FastAPI()
 
 # Configure email settings
 conf = ConnectionConfig(
-    MAIL_USERNAME = environ.get(email_address),
-    MAIL_PASSWORD = environ.get(email_password),
-    MAIL_FROM = environ.get(email_address),
-    MAIL_PORT = environ.get(email_port),
-    MAIL_SERVER = environ.get(email_server),
+    MAIL_USERNAME = environ.get("email_address"),
+    MAIL_PASSWORD = environ.get("email_password"),
+    MAIL_FROM = environ.get("email_address"),
+    MAIL_PORT = environ.get("email_port"),
+    MAIL_SERVER = environ.get("email_server"),
     MAIL_TLS = True,
     MAIL_SSL = False,
     USE_CREDENTIALS = True

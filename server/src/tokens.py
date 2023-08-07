@@ -7,9 +7,9 @@ from pydantic import BaseModel
 from os import environ
 
 # JWT Configurations
-ACCESS_TOKEN_SECRET_KEY = environ.get(ACCESS_SECRET)
-REFRESH_TOKEN_SECRET_KEY = environ.get(REFRESH_SECRET)
-RESET_TOKEN_SECRET_KEY = environ.get(RESET_SECRET)
+ACCESS_TOKEN_SECRET_KEY = environ.get("ACCESS_SECRET")
+REFRESH_TOKEN_SECRET_KEY = environ.get("REFRESH_SECRET")
+RESET_TOKEN_SECRET_KEY = environ.get("RESET_SECRET")
 
 ALGORITHM = "HS256"
 

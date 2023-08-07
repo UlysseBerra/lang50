@@ -72,7 +72,7 @@ def password_reset_request(email: EmailStr):
     message = MessageSchema(
         subject="Password Reset",
         recipients=[email],
-        body=f"Click the link to reset your password: http://{environ.get(base_url)}/reset/{reset_token}"
+        body=f"Click the link to reset your password: http://{environ.get('base_url')}/reset/{reset_token}"
     )
 
     mail.send_message(message)
