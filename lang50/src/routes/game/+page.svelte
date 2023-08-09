@@ -11,6 +11,8 @@
         data_api = await response.json();
     });
 
+    import udhr_001 from "$lib/udhr_audio/001.mp3";
+
     import runes from "$lib/images/runes.png";
     import greek_modern from "$lib/images/greek_modern.png";
     import georgian from "$lib/images/georgian.png";
@@ -41,9 +43,13 @@
         </div>
     </div>
 
-    <h2 class="mt-12">Audio: listen!</h2>
+    <h2 class="w-fit place-self-center mt-20">Audio: listen!</h2>
 
-    <div>
+    <audio controls preload="metadata">
+        <source src={udhr_001} type="audio/mp3" />
+    </audio>
+
+    <!-- <div>
         {#await data_api then d}
             <audio
                 controls
@@ -51,26 +57,49 @@
                 src={`data:audio/mp3;base64,${d.audio}`}
             />
         {/await}
-    </div>
+    </div> -->
 
-    <!-- <h2>Scripts as text</h2>
+    <h2 class="w-fit place-self-center mt-20">
+        Scripts: pick the right script!
+    </h2>
 
     <label>
-        <input type="radio" bind:group={scripts} value={1} />
-        ᚠᛇᚻ᛫ᛒᛦᚦ᛫ᚠᚱᚩᚠᚢᚱ᛫ᚠᛁᚱᚪ᛫ᚷᛖᚻᚹᛦᛚᚳᚢᛗ
+        <input
+            type="radio"
+            class="form-radio"
+            bind:group={scripts}
+            value={"1"}
+        />
+        የሰው፡ልጅ፡ሁሉ፡ሲወለድ፡ነጻና፡በክብርና፡በመብትም፡እኩልነት፡ያለው፡ነው።፡የተፈጥሮ፡ማስተዋልና፡ሕሊና፡ስላለው፡አንዱ፡ሌላውን፡በወንድማማችነት፡መንፈስ፡መመልከት፡ይገባዋል።
     </label>
 
     <label>
-        <input type="radio" bind:group={scripts} value={2} />
-        Τη γλώσσα μου έδωσαν ελληνική
+        <input
+            type="radio"
+            class="form-radio"
+            bind:group={scripts}
+            value={"2"}
+        />
+        jinweldun kil'in'nas xürrien u mitsöwjin f'il kärame w'il xgyugy, mügdejien
+        b'il ghägyülh w'id'dyemier u lözim gheleigüm jighamlun bäghädygüm bäghädy
+        keqengüm ixhwan.
     </label>
 
     <label>
-        <input type="radio" bind:group={scripts} value={3} />
-        ვეპხის ტყაოსანი შოთა რუსთაველი
-    </label> -->
+        <input
+            type="radio"
+            class="form-radio"
+            bind:group={scripts}
+            value={"3"}
+        />
+        الإعلان العالمي لحقوق الإنسان، المادة الأولانية البني أدمين كلهم مولودين
+        حرين ومتساويين في الكرامة والحقوق. إتوهبلهم العقل والضمير، والمفروض يعاملوا
+        بعض بروح الأخوية.
+    </label>
 
-    <h2 class="mt-12">Scripts: pick the right script!</h2>
+    <p>Currently selected: <span id="selectedValue" /></p>
+
+    <!-- <h2 class="mt-12">Scripts: pick the right script!</h2>
 
     <label>
         <input type="radio" bind:group={scripts} value={1} />
@@ -94,7 +123,7 @@
             <source srcset={georgian} type="image/png" />
             <img src={georgian} alt="georgian" width="500px" />
         </picture>
-    </label>
+    </label> -->
 
     <div class="collapse">
         <input type="checkbox" class="peer" />
@@ -109,4 +138,23 @@
             This is what you should know about the correct script. Enlightening?
         </div>
     </div>
+
+    <script>
+        const validScriptId = ["1"];
+
+        radioLabels.forEach((radio) => {
+            radio.addEventListener("change", () => {
+                if (radio.checked) {
+                    const selectedValue = radio.value;
+                    if (validScriptId.includes(selectedValue)) {
+                        selectedScriptSpan.textContent = selectedValue;
+                        selectedScriptSpan.style.color = "black"; // Reset color in case of previous invalid input
+                    } else {
+                        selectedScriptSpan.textContent = "Wrong script";
+                        selectedScriptSpan.style.color = "red"; // Set color to red for invalid input
+                    }
+                }
+            });
+        });
+    </script>
 </div>
