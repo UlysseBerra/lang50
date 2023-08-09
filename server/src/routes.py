@@ -1,8 +1,9 @@
 from fastapi import APIRouter, HTTPException, Depends
-from src.db import register_user, verify_user, revoke_refresh_token, is_refresh_token_revoked, is_email_registered, get_user_id_by_email, update_user_password
+from src.db import register_user, verify_user, revoke_refresh_token, is_refresh_token_revoked, is_email_registered, get_user_id_by_email, update_user_password, get_language_family, get_language_name, get_language_text
 from src.tokens import *
 from pydantic import EmailStr
 from src.email import send_mail
+import random
 
 router = APIRouter()
 
@@ -102,6 +103,17 @@ def password_reset(reset_token: str, refresh_token: str, new_password: str):
     revoke_refresh_token(refresh_token)
     revoke_refresh_token(reset_token)
     return {"message": "Password reset successful"}
+
+@router.get("/language/")
+def get_language():
+    id = random.randint(1, 156)
+    
+    return {
+        "lang_id": id,
+        "lang_name": get_language_name(id),
+        "lang_family": get_language_family(id),
+        "lang_text": get_language_text(id)
+    }
 
 # Protected Route
 @router.get("/protected/")
