@@ -69,6 +69,14 @@ We use the following technologies:
     * add life refill mechanism: after 5 consecutive correct answers, 1 life gets refilled out of initial 3
     * provide the option to exclude specific languages, e.g. the user's native language
 
+* Thingy
+    * Registration: user inputs credentials into registration form, browser sends credentials to /register.
+    * Login: user inputs credentials into login form, browser sends credentials to /login, gets access token + refresh token
+    * Token Refresh: once access token has expired (15 min), browser sends refresh token to /refresh to get new access token
+    * Logout: browser sends POST to /logout, server revokes refresh tokens
+    * Gameplay: browser sends GET requests to /language, $n_{fakes} + 1$ times, shows true audio, shows true and fake scripts, once user has chosen, it displays what was right and wrong, the language families of all texts, and the correct name of the fakes, browser sends points to /points (to be implemented) and server adds the points to DB
+    * Hints: TBD
+
 * Languages: first list (50 in total, as in `lang50`?)
     * natural languages (44, including 3 ancient)
         * Indo-European
