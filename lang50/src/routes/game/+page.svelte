@@ -1,14 +1,14 @@
 <script lang="ts">
     let scripts = 1;
 
-    // --- Importing audio from base64 encoding in API
     import { onMount } from "svelte";
-    // using the endpoint for an object, not for the whole array
-    const api_endpoint = "http://localhost:8080/languages/1";
+    const api_endpoint = "http://0.0.0.0:8000/language/";
     export let data_api: any = [];
     onMount(async function () {
         const response = await fetch(api_endpoint);
+        console.log(response);
         data_api = await response.json();
+        console.log(data_api);
     });
 
     import udhr_001 from "$lib/udhr_audio/001.mp3";
@@ -57,47 +57,51 @@
                 src={`data:audio/mp3;base64,${d.audio}`}
             />
         {/await}
-    </div> -->
+    </div>
+ -->
 
     <h2 class="w-fit place-self-center mt-20">
         Scripts: pick the right script!
     </h2>
 
     <label>
-        <input
-            type="radio"
-            class="form-radio"
-            bind:group={scripts}
-            value={"1"}
-        />
+        <input type="radio" class="form-radio" bind:group={scripts} value="0" />
+        {#await data_api then d}
+            {d.lang_text}
+            <!-- {d.lang_id}
+            {d.lang_name}
+            {d.lang_family} -->
+        {/await}
+    </label>
+
+    <label>
+        <input type="radio" class="form-radio" bind:group={scripts} value="1" />
         የሰው፡ልጅ፡ሁሉ፡ሲወለድ፡ነጻና፡በክብርና፡በመብትም፡እኩልነት፡ያለው፡ነው።፡የተፈጥሮ፡ማስተዋልና፡ሕሊና፡ስላለው፡አንዱ፡ሌላውን፡በወንድማማችነት፡መንፈስ፡መመልከት፡ይገባዋል።
     </label>
 
     <label>
-        <input
-            type="radio"
-            class="form-radio"
-            bind:group={scripts}
-            value={"2"}
-        />
+        <input type="radio" class="form-radio" bind:group={scripts} value="2" />
         jinweldun kil'in'nas xürrien u mitsöwjin f'il kärame w'il xgyugy, mügdejien
         b'il ghägyülh w'id'dyemier u lözim gheleigüm jighamlun bäghädygüm bäghädy
         keqengüm ixhwan.
     </label>
 
     <label>
-        <input
-            type="radio"
-            class="form-radio"
-            bind:group={scripts}
-            value={"3"}
-        />
+        <input type="radio" class="form-radio" bind:group={scripts} value="3" />
         الإعلان العالمي لحقوق الإنسان، المادة الأولانية البني أدمين كلهم مولودين
         حرين ومتساويين في الكرامة والحقوق. إتوهبلهم العقل والضمير، والمفروض يعاملوا
         بعض بروح الأخوية.
     </label>
 
-    <p>Currently selected: <span id="selectedValue" /></p>
+    <p class="w-fit place-self-center mt-20">
+        The selected answer is… <span id="selectedValue" />
+    </p>
+    <p class="w-fit place-self-center mt-20">
+        Current storage: <span id="resultStorage" />
+    </p>
+    <p class="w-fit place-self-center mt-20">
+        And the current score is: <span id="counterDisplay" />
+    </p>
 
     <!-- <h2 class="mt-12">Scripts: pick the right script!</h2>
 
@@ -140,18 +144,32 @@
     </div>
 
     <script>
+        const radioLabels = document.querySelectorAll(".form-radio");
+        const selectedScriptSpan = document.getElementById("selectedValue");
         const validScriptId = ["1"];
+        const resultStorage = document.getElementById("resultStorage");
+        const counterDisplay = document.getElementById("counterDisplay");
+
+        let selectedValue = "";
+        let selectionCounter = 0;
 
         radioLabels.forEach((radio) => {
             radio.addEventListener("change", () => {
                 if (radio.checked) {
-                    const selectedValue = radio.value;
-                    if (validScriptId.includes(selectedValue)) {
-                        selectedScriptSpan.textContent = selectedValue;
-                        selectedScriptSpan.style.color = "black"; // Reset color in case of previous invalid input
+                    const inputValue = radio.value;
+                    if (validScriptId.includes(inputValue)) {
+                        selectedValue = inputValue;
+                        selectedScriptSpan.textContent = "Right!";
+                        selectedScriptSpan.style.color = "green";
+                        resultStorage.textContent = `Stored Value: ${selectedValue}`;
+                        selectionCounter++;
+                        counterDisplay.textContent = `Selections: ${selectionCounter}`;
                     } else {
-                        selectedScriptSpan.textContent = "Wrong script";
-                        selectedScriptSpan.style.color = "red"; // Set color to red for invalid input
+                        selectedValue = "";
+                        selectedScriptSpan.textContent = "Wrong!";
+                        selectedScriptSpan.style.color = "red";
+                        resultStorage.textContent = "";
+                        counterDisplay.textContent = `Selections: ${selectionCounter}`;
                     }
                 }
             });
