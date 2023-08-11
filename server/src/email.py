@@ -8,7 +8,7 @@ load_dotenv()
 
 def send_mail(subject, recipient, body):
     msg = MIMEMultipart()
-    msg["From"] = str(os.getenv("email_address"))
+    msg["From"] = os.getenv("email_address")
     msg["To"] = str(recipient)
     msg["Subject"] = str(subject)
     msg.attach(MIMEText(str(body), "plain"))
