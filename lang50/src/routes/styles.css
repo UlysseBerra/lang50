@@ -134,3 +134,10 @@ button:focus:not(:focus-visible) {
 table {
     color: rgba(255, 255, 255, 0.45);
 } */
+
+label {
+    margin-top: 1em;
+    /* font-family: auto; */
+    margin-left: 25%;
+    margin-right: 25%;
+}

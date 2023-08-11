@@ -11,7 +11,8 @@ def initialize_database():
 			id INTEGER PRIMARY KEY AUTOINCREMENT,
 			username TEXT NOT NULL UNIQUE,
 			email TEXT NOT NULL UNIQUE,
-			password TEXT NOT NULL
+			password TEXT NOT NULL,
+			points INTEGER NOT NULL
 		)
 	''')
 
@@ -62,6 +63,29 @@ def is_refresh_token_revoked(refresh_token):
 
 	return result[0] == 1
 
+def get_points(user_id: int):
+    
+	conn = sqlite3.connect("./database.db")
+	cursor = conn.cursor()
+	
+	cursor.execute('SELECT points FROM users WHERE id=?', (user_id,))
+	result = cursor.fetchone()	
+ 
+ 
+	conn.commit()
+	conn.close()
+ 
+	return result[0]
+
+def add_points(id, points):
+	conn = sqlite3.connect("./database.db")
+	cursor = conn.cursor()
+	
+	cursor.execute('UPDATE users SET points=? WHERE id=?', (get_points(id) + points, id,))
+	
+	conn.commit()
+	conn.close()
+
 def register_user(username, email, password):
 	conn = sqlite3.connect('./database.db')
 	cursor = conn.cursor()
@@ -72,8 +96,8 @@ def register_user(username, email, password):
 
 		# Insert the user data into the database
 		cursor.execute('''
-			INSERT INTO users (username, email, password)
-			VALUES (?, ?, ?)
+			INSERT INTO users (username, email, password, points)
+			VALUES (?, ?, ?, 0)
 		''', (username, email, hashed_password))
 
 		conn.commit()

@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException, Depends
-from src.db import register_user, verify_user, revoke_refresh_token, is_refresh_token_revoked, is_email_registered, get_user_id_by_email, update_user_password, get_language_family, get_language_name, get_language_text
+from src.db import register_user, verify_user, revoke_refresh_token, is_refresh_token_revoked, is_email_registered, get_user_id_by_email, update_user_password, get_language_family, get_language_name, get_language_text, get_points, add_points
 from src.tokens import *
 from pydantic import EmailStr
 from src.email import send_mail
@@ -60,7 +60,7 @@ def logout(refresh_token: str):
 
 # Password Reset Request
 @router.post("/reset-request/")
-def password_reset_request(email: EmailStr):
+def password_reset_request(email: EmailStr, newPassword: str):
     if not is_email_registered(email):
         raise HTTPException(status_code=400, detail="Email not registered")
 
@@ -68,17 +68,17 @@ def password_reset_request(email: EmailStr):
     reset_token = create_reset_token({"sub": str(user_id)})
     
     # Send password reset email
-    subject="Password Reset",
-    recipient=email,
-    body="Click the link to reset your password: http://0.0.0.0:8000/reset/" + reset_token,
+    subject = "Password Reset"  # No tuple wrapping here
+    recipient = email  # No tuple wrapping here
+    body = "Click the link to reset your password: http://0.0.0.0:8000/reset/" + reset_token + "?new_password="+newPassword
 
     send_mail(subject, recipient, body)
 
     return {"message": "Password reset email sent"}
 
 # Password Reset
-@router.post("/reset/{reset_token}")
-def password_reset(reset_token: str, refresh_token: str, new_password: str):
+@router.get("/reset/{reset_token}")
+def password_reset(reset_token: str, new_password: str):
     if is_refresh_token_revoked(reset_token):
         raise HTTPException(status_code=401, detail="Reset token has been revoked")
     
@@ -92,15 +92,6 @@ def password_reset(reset_token: str, refresh_token: str, new_password: str):
 
     update_user_password(user_id, new_password)
     
-    payload = decode_refresh_token(refresh_token)
-    if not payload:
-        raise HTTPException(status_code=401, detail="Invalid refresh token")
-
-    user_id = payload.get("sub")
-    if not user_id:
-        raise HTTPException(status_code=401, detail="Invalid refresh token")
-
-    revoke_refresh_token(refresh_token)
     revoke_refresh_token(reset_token)
     return {"message": "Password reset successful"}
 
@@ -115,7 +106,12 @@ def get_language():
         "lang_text": get_language_text(id)
     }
 
-# Protected Route
-@router.get("/protected/")
+# Protected Routes
+@router.get("/get_points/")
 def protected_route(user_id: int = Depends(get_user_id_from_token)):
-    return {"message": f"Welcome, User ID {user_id}!"}
+    return {"user_id": user_id, "points": get_points(user_id)}
+
+@router.post("/add_points/")
+def protected_route(points: int, user_id: int = Depends(get_user_id_from_token)):
+    add_points(user_id, points)
+    return {"user_id": user_id, "points": get_points(int(user_id))}
