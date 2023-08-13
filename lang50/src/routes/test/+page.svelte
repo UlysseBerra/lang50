@@ -1730,3 +1730,29 @@
         />
     {/await}
 </div> -->
+
+<!-- <h2 class="mt-12">Scripts: pick the right script!</h2>
+
+    <label>
+        <input type="radio" bind:group={scripts} value={1} />
+        <picture>
+            <source srcset={runes} type="image/png" />
+            <img src={runes} alt="runes" width="500px" />
+        </picture>
+    </label>
+
+    <label>
+        <input type="radio" bind:group={scripts} value={2} />
+        <picture>
+            <source srcset={greek_modern} type="image/png" />
+            <img src={greek_modern} alt="greek_modern" width="500px" />
+        </picture>
+    </label>
+
+    <label>
+        <input type="radio" bind:group={scripts} value={3} />
+        <picture>
+            <source srcset={georgian} type="image/png" />
+            <img src={georgian} alt="georgian" width="500px" />
+        </picture>
+    </label> -->
