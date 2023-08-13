@@ -1,16 +1,66 @@
 <script lang="ts">
     let scripts = 1;
 
+    // Get scripts from API
     import { onMount } from "svelte";
     const api_endpoint = "http://0.0.0.0:8000/language/";
-    export let data_api: any = [];
+    export let data_api_1: any = [];
+    export let data_api_2: any = [];
+    export let data_api_3: any = [];
+    export let data_api_4: any = [];
     onMount(async function () {
-        const response = await fetch(api_endpoint);
-        console.log(response);
-        data_api = await response.json();
-        console.log(data_api);
+        const response_1 = await fetch(api_endpoint);
+        const response_2 = await fetch(api_endpoint);
+        const response_3 = await fetch(api_endpoint);
+        const response_4 = await fetch(api_endpoint);
+        data_api_1 = await response_1.json();
+        data_api_2 = await response_2.json();
+        data_api_3 = await response_3.json();
+        data_api_4 = await response_4.json();
+
+        const radioLabels = document.querySelectorAll(".form-radio");
+        const selectedScriptSpan = document.getElementById("selectedValue")!;
+        // const validScriptId = ["1"];
+        const resultStorage = document.getElementById("resultStorage")!;
+        const counterDisplay = document.getElementById("counterDisplay")!;
+
+        let selectedValue = "";
+        let selectionCounter = 0;
+
+        radioLabels.forEach((radio) => {
+            radio.addEventListener("change", () => {
+                if (radio.checked) {
+                    const inputValue = radio.value;
+                    console.log("Input Value:", inputValue);
+                    console.log("rightNum:", rightNum);
+                    if (parseInt(inputValue) === rightNum) {
+                        selectedValue = inputValue;
+                        selectedScriptSpan.textContent = "Right!";
+                        selectedScriptSpan.style.color = "green";
+                        resultStorage.textContent = `Stored Value: ${selectedValue}`;
+                        selectionCounter++;
+                        counterDisplay.textContent = `Selections: ${selectionCounter}`;
+                    } else {
+                        selectedValue = "";
+                        selectedScriptSpan.textContent = "Wrong!";
+                        selectedScriptSpan.style.color = "red";
+                        resultStorage.textContent = "";
+                        counterDisplay.textContent = `Selections: ${selectionCounter}`;
+                    }
+                }
+            });
+        });
     });
 
+    // Define right script
+    function randomNumber(min: number, max: number) {
+        return Math.floor(Math.random() * (max - min) + min);
+    }
+    export let rightNum: number = randomNumber(1, 4);
+    console.log(rightNum);
+    console.log(typeof rightNum);
+
+    // Get local audio
     import udhr_001 from "$lib/udhr_audio/001.mp3";
 
     import runes from "$lib/images/runes.png";
@@ -64,33 +114,35 @@
         Scripts: pick the right script!
     </h2>
 
-    <label>
-        <input type="radio" class="form-radio" bind:group={scripts} value="0" />
-        {#await data_api then d}
-            {d.lang_text}
-            <!-- {d.lang_id}
-            {d.lang_name}
-            {d.lang_family} -->
-        {/await}
-    </label>
+    <!--
+        {d.lang_text}
+        {d.lang_id}
+        {d.lang_name}
+        {d.lang_family} -->
 
     <label>
         <input type="radio" class="form-radio" bind:group={scripts} value="1" />
-        የሰው፡ልጅ፡ሁሉ፡ሲወለድ፡ነጻና፡በክብርና፡በመብትም፡እኩልነት፡ያለው፡ነው።፡የተፈጥሮ፡ማስተዋልና፡ሕሊና፡ስላለው፡አንዱ፡ሌላውን፡በወንድማማችነት፡መንፈስ፡መመልከት፡ይገባዋል።
+        {#await data_api_1 then d}
+            {d.lang_text}
+        {/await}
     </label>
-
     <label>
         <input type="radio" class="form-radio" bind:group={scripts} value="2" />
-        jinweldun kil'in'nas xürrien u mitsöwjin f'il kärame w'il xgyugy, mügdejien
-        b'il ghägyülh w'id'dyemier u lözim gheleigüm jighamlun bäghädygüm bäghädy
-        keqengüm ixhwan.
+        {#await data_api_2 then d}
+            {d.lang_text}
+        {/await}
     </label>
-
     <label>
         <input type="radio" class="form-radio" bind:group={scripts} value="3" />
-        الإعلان العالمي لحقوق الإنسان، المادة الأولانية البني أدمين كلهم مولودين
-        حرين ومتساويين في الكرامة والحقوق. إتوهبلهم العقل والضمير، والمفروض يعاملوا
-        بعض بروح الأخوية.
+        {#await data_api_3 then d}
+            {d.lang_text}
+        {/await}
+    </label>
+    <label>
+        <input type="radio" class="form-radio" bind:group={scripts} value="4" />
+        {#await data_api_4 then d}
+            {d.lang_text}
+        {/await}
     </label>
 
     <p class="w-fit place-self-center mt-20">
@@ -102,32 +154,6 @@
     <p class="w-fit place-self-center mt-20">
         And the current score is: <span id="counterDisplay" />
     </p>
-
-    <!-- <h2 class="mt-12">Scripts: pick the right script!</h2>
-
-    <label>
-        <input type="radio" bind:group={scripts} value={1} />
-        <picture>
-            <source srcset={runes} type="image/png" />
-            <img src={runes} alt="runes" width="500px" />
-        </picture>
-    </label>
-
-    <label>
-        <input type="radio" bind:group={scripts} value={2} />
-        <picture>
-            <source srcset={greek_modern} type="image/png" />
-            <img src={greek_modern} alt="greek_modern" width="500px" />
-        </picture>
-    </label>
-
-    <label>
-        <input type="radio" bind:group={scripts} value={3} />
-        <picture>
-            <source srcset={georgian} type="image/png" />
-            <img src={georgian} alt="georgian" width="500px" />
-        </picture>
-    </label> -->
 
     <div class="collapse">
         <input type="checkbox" class="peer" />
@@ -144,35 +170,37 @@
     </div>
 
     <script>
-        const radioLabels = document.querySelectorAll(".form-radio");
-        const selectedScriptSpan = document.getElementById("selectedValue");
-        const validScriptId = ["1"];
-        const resultStorage = document.getElementById("resultStorage");
-        const counterDisplay = document.getElementById("counterDisplay");
+        // const radioLabels = document.querySelectorAll(".form-radio");
+        // const selectedScriptSpan = document.getElementById("selectedValue");
+        // // const validScriptId = ["1"];
+        // const resultStorage = document.getElementById("resultStorage");
+        // const counterDisplay = document.getElementById("counterDisplay");
 
-        let selectedValue = "";
-        let selectionCounter = 0;
+        // let selectedValue = "";
+        // let selectionCounter = 0;
 
-        radioLabels.forEach((radio) => {
-            radio.addEventListener("change", () => {
-                if (radio.checked) {
-                    const inputValue = radio.value;
-                    if (validScriptId.includes(inputValue)) {
-                        selectedValue = inputValue;
-                        selectedScriptSpan.textContent = "Right!";
-                        selectedScriptSpan.style.color = "green";
-                        resultStorage.textContent = `Stored Value: ${selectedValue}`;
-                        selectionCounter++;
-                        counterDisplay.textContent = `Selections: ${selectionCounter}`;
-                    } else {
-                        selectedValue = "";
-                        selectedScriptSpan.textContent = "Wrong!";
-                        selectedScriptSpan.style.color = "red";
-                        resultStorage.textContent = "";
-                        counterDisplay.textContent = `Selections: ${selectionCounter}`;
-                    }
-                }
-            });
-        });
+        // radioLabels.forEach((radio) => {
+        //     radio.addEventListener("change", () => {
+        //         if (radio.checked) {
+        //             const inputValue = radio.value;
+        //             console.log("Input Value:", inputValue);
+        //             console.log("rightNum:", rightNum);
+        //             if (parseInt(inputValue) === rightNum) {
+        //                 selectedValue = inputValue;
+        //                 selectedScriptSpan.textContent = "Right!";
+        //                 selectedScriptSpan.style.color = "green";
+        //                 resultStorage.textContent = `Stored Value: ${selectedValue}`;
+        //                 selectionCounter++;
+        //                 counterDisplay.textContent = `Selections: ${selectionCounter}`;
+        //             } else {
+        //                 selectedValue = "";
+        //                 selectedScriptSpan.textContent = "Wrong!";
+        //                 selectedScriptSpan.style.color = "red";
+        //                 resultStorage.textContent = "";
+        //                 counterDisplay.textContent = `Selections: ${selectionCounter}`;
+        //             }
+        //         }
+        //     });
+        // });
     </script>
 </div>
