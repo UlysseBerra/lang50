@@ -48,7 +48,9 @@
     let options: Language[] = [];
     let newCorrect: Language | null = null;
 
-    // Shuffle until we get a different set and a different correct answer
+    // Avoid having the same answers:
+    // shuffle until we get a different set of languages
+    // and a different correct answer
     do {
       options = [...allLanguages]
         .sort(() => Math.random() - 0.5)
@@ -82,23 +84,28 @@
     if (lang.lang_id === correctLang.lang_id) {
       score++;
       feedback = `
-        ✅ Correct! This is <strong>${correctLang.lang_name}</strong>.<br>
-        <em>${correctLang.lang_text}</em><br>
+      <div class="game text-center text-xl">
+      <br><br>
+        🟢 Correct! This is <strong>${correctLang.lang_name}</strong>.<br><br>
+        <em>${correctLang.lang_text}</em><br><br>
         <a href="https://www.ethnologue.com/language/${correctLang.lang_iso}"
            target="_blank" class="text-blue-500 underline">
            Learn about this language
-        </a>`;
-      setTimeout(() => newRound(), 10000);
+        </a>
+        </div>`;
+      // setTimeout(() => newRound(), 10000);
     } else {
       lives--;
       feedback = `
-        ❌ Wrong! The correct answer was <strong>${correctLang.lang_name}</strong>.<br>
-        <em>${correctLang.lang_text}</em><br>
+      <div class="game text-center text-xl">
+      <br><br>
+        🔴 Wrong! The correct answer was <strong>${correctLang.lang_name}</strong>.<br><br>
+        <em>${correctLang.lang_text}</em><br><br>
         <a href="https://www.ethnologue.com/language/${correctLang.lang_iso}"
            target="_blank" class="text-blue-500 underline">
            Learn about this language
-        </a>`;
-        setTimeout(() => newRound(), 10000);
+        </a>
+        </div>`;
 
       if (lives <= 0) {
         gameOver = true;
@@ -128,18 +135,18 @@
 </script>
 
 {#if gameOver}
-  <div class="text-center mt-10">
-    <h2 class="text-2xl font-bold">Game Over</h2>
-    <p class="mt-2">You reached round {round}.</p>
-    <p class="mt-1 font-semibold">Final Score: {score}</p>
-    <button class="btn btn-primary mt-4" on:click={restartGame}>
+  <div class="text-center">
+    <h2 class="text-3xl font-bold mt-20 mb-5 text-purple-500">Game Over</h2>
+    <p class="text-xl mt-2">You reached round {round}!</p>
+    <p class="text-xl mt-2 font-semibold">Final Score: {score}</p>
+    <button class="btn btn-primary mt-20" on:click={restartGame}>
       Start Again
     </button>
   </div>
 {:else}
   <div class="game text-center">
-    <h2 class="text-xl mb-4">Round {round}</h2>
-    <p class="mb-2">Lives: {lives} · Score: {score}</p>
+    <h2 class="text-3xl mt-20 mb-5 text-purple-500">Round {round}</h2>
+    <p class="mb-20">Lives: {lives} • Score: {score}</p>
 
     {#if correctLang}
       <!-- Force reload the audio when round changes -->
@@ -151,7 +158,7 @@
       {/key}
     {/if}
 
-    <div class="options mt-4 flex justify-center gap-4">
+    <div class="options mt-20 flex justify-center gap-4">
       {#each currentOptions as lang}
         <button
           class="btn btn-outline"
@@ -168,11 +175,12 @@
         {@html feedback}
       </div>
       <div>
+        <br><br>
         <button
-          class="btn btn-outline"
+          class="btn btn-primary"
           on:click={() => newRound()}
         >
-          Start next round now!
+          Start next round now
         </button>
       </div>
     {/if}
