@@ -40,8 +40,8 @@ We use the following technologies:
 * Wireframing
     * [Figma](https://www.figma.com/)
 * Back-end
-    * [Java](https://www.java.com/) + [Spring Boot](https://spring.io/)
-    * [H2 database](http://h2database.com/)
+    * [Python](https://www.python.org/) + [FastAPI](https://fastapi.tiangolo.com/)
+    * [SQLite3 database](https://www.sqlite.org/)
 * Front-end
     * [Svelte](https://svelte.dev/) front end compiler
         * [Svelte Tutorial](https://svelte.dev/tutorial/)
@@ -69,7 +69,7 @@ We use the following technologies:
     * add life refill mechanism: after 5 consecutive correct answers, 1 life gets refilled out of initial 3
     * provide the option to exclude specific languages, e.g. the user's native language
 
-* Thingy
+* architecture
     * Registration: user inputs credentials into registration form, browser sends credentials to /register.
     * Login: user inputs credentials into login form, browser sends credentials to /login, gets access token + refresh token
     * Token Refresh: once access token has expired (15 min), browser sends refresh token to /refresh to get new access token
