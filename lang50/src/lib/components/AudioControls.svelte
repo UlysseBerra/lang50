@@ -142,7 +142,7 @@
         {#if !disableTooltip && (inlineTooltip || showTooltip)}
             <div
                 class:hover-tooltip={!inlineTooltip}
-                transition:fade
+                transition:fade|global
                 bind:this={tooltip}
                 class="tooltip"
                 style="--left:{tooltipX}px;
