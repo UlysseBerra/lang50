@@ -12,12 +12,6 @@
         <ul class="menu menu-horizontal px-1">
             <li><a href="/game">Game</a></li>
             <li><a href="/leaderboard">Leaderboard</a></li>
-            <li>
-                <a href="/test">&#123;Test&#125;</a>
-            </li>
-            <li>
-                <a href="/test_files">&#123;Test files&#125;</a>
-            </li>
         </ul>
     </div>
     <div class="navbar-end">
