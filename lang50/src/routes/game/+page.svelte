@@ -1,259 +1,180 @@
 <script lang="ts">
-    let scripts = 1;
-    let audio_path: string = "";
+  import { onMount } from "svelte";
 
-    // Get data from API
-    import { onMount } from "svelte";
-    const api_endpoint = "http://0.0.0.0:8000/language/";
-    export let data_api_1: any = [];
-    export let data_api_2: any = [];
-    export let data_api_3: any = [];
-    export let data_api_4: any = [];
+  interface Language {
+    lang_id: number;
+    lang_name: string;
+    lang_text: string;
+    lang_iso: string;
+    audio_file: string;
+  }
 
-    onMount(async function () {
-        const response_1 = await fetch(api_endpoint);
-        const response_2 = await fetch(api_endpoint);
-        const response_3 = await fetch(api_endpoint);
-        const response_4 = await fetch(api_endpoint);
-        const data_api_1 = await response_1.json();
-        const data_api_2 = await response_2.json();
-        const data_api_3 = await response_3.json();
-        const data_api_4 = await response_4.json();
-        let mylangid: string = await data_api_1.lang_id;
-        audio_path = "udhr_audio/" + mylangid + ".mp3";
-    });
+  let allLanguages: Language[] = [];
+  let currentOptions: Language[] = [];
+  let correctLang: Language | null = null;
 
-    // Define right script + sort scripts randomly
-    function randomNumber(min: number, max: number) {
-        return Math.floor(Math.random() * (max - min) + min);
+  let previousCorrectId: number | null = null;
+  let previousSet: number[] = [];
+
+  let feedback = "";
+  let lives = 3;
+  let round = 0;
+  let score = 0;
+  let gameOver = false;
+  let answered = false;
+
+  let audioEl: HTMLAudioElement | null = null;
+
+  async function fetchLanguages() {
+    const res = await fetch("http://localhost:8000/language/all");
+    allLanguages = await res.json();
+    newRound(); // start first round
+  }
+
+  function arraysEqual(a: number[], b: number[]) {
+    return a.length === b.length && a.every((val, i) => val === b[i]);
+  }
+
+  function newRound() {
+    if (lives <= 0) {
+      gameOver = true;
+      return;
     }
-    export let rightNum: number = randomNumber(1, 4);
-    console.log(rightNum);
 
-    let selectedAudio = "";
+    round++;
+    answered = false;
+    feedback = "";
+
+    let options: Language[] = [];
+    let newCorrect: Language | null = null;
+
+    // Shuffle until we get a different set and a different correct answer
+    do {
+      options = [...allLanguages]
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 3);
+
+      newCorrect = options[Math.floor(Math.random() * options.length)];
+    } while (
+      !newCorrect ||
+      newCorrect.lang_id === previousCorrectId ||
+      arraysEqual(options.map((o) => o.lang_id), previousSet)
+    );
+
+    currentOptions = options;
+    correctLang = newCorrect;
+
+    previousCorrectId = correctLang.lang_id;
+    previousSet = options.map((o) => o.lang_id);
+
+    // If the audio element exists, reload it
+    queueMicrotask(() => {
+      if (audioEl) {
+        audioEl.load();
+      }
+    });
+  }
+
+  function checkAnswer(lang: Language) {
+    if (!correctLang || answered) return;
+    answered = true;
+
+    if (lang.lang_id === correctLang.lang_id) {
+      score++;
+      feedback = `
+        ✅ Correct! This is <strong>${correctLang.lang_name}</strong>.<br>
+        <em>${correctLang.lang_text}</em><br>
+        <a href="https://www.ethnologue.com/language/${correctLang.lang_iso}"
+           target="_blank" class="text-blue-500 underline">
+           Learn about this language
+        </a>`;
+      setTimeout(() => newRound(), 10000);
+    } else {
+      lives--;
+      feedback = `
+        ❌ Wrong! The correct answer was <strong>${correctLang.lang_name}</strong>.<br>
+        <em>${correctLang.lang_text}</em><br>
+        <a href="https://www.ethnologue.com/language/${correctLang.lang_iso}"
+           target="_blank" class="text-blue-500 underline">
+           Learn about this language
+        </a>`;
+        setTimeout(() => newRound(), 10000);
+
+      if (lives <= 0) {
+        gameOver = true;
+      } else {
+        // setTimeout(() => newRound(), 3000);
+      }
+    }
+  }
+
+  function restartGame() {
+    lives = 3;
+    round = 0;
+    score = 0;
+    gameOver = false;
+    previousCorrectId = null;
+    previousSet = [];
+    newRound();
+  }
+
+  onMount(fetchLanguages);
+
+  // Construct a cache-busting URL so the audio refreshes every round
+  $: audioSrc =
+    correctLang
+      ? `http://localhost:8000/audio/${correctLang.audio_file}`
+      : "";
 </script>
 
-<svelte:head>
-    <title>Game</title>
-    <meta name="description" content="This is the game" />
-</svelte:head>
+{#if gameOver}
+  <div class="text-center mt-10">
+    <h2 class="text-2xl font-bold">Game Over</h2>
+    <p class="mt-2">You reached round {round}.</p>
+    <p class="mt-1 font-semibold">Final Score: {score}</p>
+    <button class="btn btn-primary mt-4" on:click={restartGame}>
+      Start Again
+    </button>
+  </div>
+{:else}
+  <div class="game text-center">
+    <h2 class="text-xl mb-4">Round {round}</h2>
+    <p class="mb-2">Lives: {lives} · Score: {score}</p>
 
-<div class="text-column">
-    <h1>Game</h1>
+    {#if correctLang}
+      <!-- Force reload the audio when round changes -->
+      {#key round}
+        <audio bind:this={audioEl} controls preload="auto">
+          <source src={audioSrc} type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+      {/key}
+    {/if}
 
-    <!-- Display game metadata -->
-    <div class="stats shadow mt-12 mb-12">
-        <div class="stat place-items-center">
-            <div class="stat-title">Round</div>
-            <div class="stat-value">1</div>
-        </div>
-
-        <div class="stat place-items-center">
-            <div class="stat-title">Score</div>
-            <div class="stat-value">0</div>
-        </div>
-
-        <div class="stat place-items-center">
-            <div class="stat-title">Lives</div>
-            <div class="stat-value">3</div>
-        </div>
-    </div>
-
-    <!-- Display audio snippet -->
-    <h2 class="w-fit place-self-center mt-20">Audio: listen!</h2>
-
-    <div>
-        {#await data_api_1}
-            <p>Loading audio...</p>
-        {:then}
-            {#if audio_path}
-                <audio controls preload="metadata">
-                    <source src={audio_path} type="audio/mp3" />
-                    Your browser does not support the audio element.
-                </audio>
-            {:else}
-                <p>No audio available</p>
-            {/if}
-        {:catch error}
-            <p>Error fetching audio: {error.message}</p>
-        {/await}
-    </div>
-
-    <!-- Display choices for script -->
-    <h2 class="w-fit place-self-center mt-20">
-        Scripts: pick the right script!
-    </h2>
-
-    <!-- Variables in API:
-        {d.lang_text}
-        {d.lang_id}
-        {d.lang_name}
-        {d.lang_family} -->
-
-    <!-- Test for validation logic -->
-    <!-- <label>
-        <input type="radio" class="form-radio" bind:group={scripts} value="1" />
-        {#await data_api_1 then d}
-            {d.lang_text}
-            {#if scripts === rightNum && selectedAudio === ""}
-                {#if audioMap[d.lang_id]}
-                    <audio controls preload="metadata">
-                        {#each audioMap[d.lang_id] as audio (audio)}
-                            <source src={audio} type="audio/mp3" />
-                        {/each}
-                    </audio>
-                {/if}
-            {/if}
-        {/await}
-    </label>
-    <label>
-        <input type="radio" class="form-radio" bind:group={scripts} value="1" />
-        {#await data_api_2 then d}
-            {d.lang_text}
-            {#if scripts === rightNum && selectedAudio === ""}
-                {#if audioMap[d.lang_id]}
-                    <audio controls preload="metadata">
-                        {#each audioMap[d.lang_id] as audio (audio)}
-                            <source src={audio} type="audio/mp3" />
-                        {/each}
-                    </audio>
-                {/if}
-            {/if}
-        {/await}
-    </label>
-    <label>
-        <input type="radio" class="form-radio" bind:group={scripts} value="1" />
-        {#await data_api_3 then d}
-            {d.lang_text}
-            {#if scripts === rightNum && selectedAudio === ""}
-                {#if audioMap[d.lang_id]}
-                    <audio controls preload="metadata">
-                        {#each audioMap[d.lang_id] as audio (audio)}
-                            <source src={audio} type="audio/mp3" />
-                        {/each}
-                    </audio>
-                {/if}
-            {/if}
-        {/await}
-    </label>
-    <label>
-        <input type="radio" class="form-radio" bind:group={scripts} value="1" />
-        {#await data_api_4 then d}
-            {d.lang_text}
-            {#if scripts === rightNum && selectedAudio === ""}
-                {#if audioMap[d.lang_id]}
-                    <audio controls preload="metadata">
-                        {#each audioMap[d.lang_id] as audio (audio)}
-                            <source src={audio} type="audio/mp3" />
-                        {/each}
-                    </audio>
-                {/if}
-            {/if}
-        {/await}
-    </label> -->
-
-    <label>
-        <input type="radio" class="form-radio" bind:group={scripts} value="1" />
-        {#await data_api_1 then d}
-            {d.lang_text}
-        {/await}
-    </label>
-    <label>
-        <input type="radio" class="form-radio" bind:group={scripts} value="2" />
-        {#await data_api_2 then d}
-            {d.lang_text}
-        {/await}
-    </label>
-    <label>
-        <input type="radio" class="form-radio" bind:group={scripts} value="3" />
-        {#await data_api_3 then d}
-            {d.lang_text}
-        {/await}
-    </label>
-    <label>
-        <input type="radio" class="form-radio" bind:group={scripts} value="4" />
-        {#await data_api_4 then d}
-            {d.lang_text}
-        {/await}
-    </label>
-
-    <!-- Test: display various current values -->
-    <p class="w-fit place-self-center mt-20">
-        Value for `rightNum` (right answer): {rightNum}
-        <br />
-        {#await data_api_1 then d}
-            Value for `d.lang_id`: {d.lang_id}
-        {/await}<br />
-        {#await data_api_1 then d}
-            Value for `d.lang_name`: {d.lang_name}
-        {/await}<br />
-        {#await data_api_1 then d}
-            Value for `d.lang_family`: {d.lang_family}
-        {/await}<br />
-        {#await data_api_1 then d}
-            Value for `d.lang_text`: {d.lang_text}
-        {/await}<br />
-    </p>
-    <p class="w-fit place-self-center mt-20">
-        The selected answer is… <span id="selectedValue" />
-    </p>
-    <p class="w-fit place-self-center mt-20">
-        Current storage: <span id="resultStorage" />
-    </p>
-    <p class="w-fit place-self-center mt-20">
-        And the current score is: <span id="counterDisplay" />
-    </p>
-
-    <!-- Hint box -->
-    <div class="collapse">
-        <input type="checkbox" class="peer" />
-        <div
-            class="collapse-title bg-base-100 text-primary-content peer-checked:bg-primary-focus peer-checked:text-primary-content rounded-t-lg mt-6 text-center"
+    <div class="options mt-4 flex justify-center gap-4">
+      {#each currentOptions as lang}
+        <button
+          class="btn btn-outline"
+          disabled={answered}
+          on:click={() => checkAnswer(lang)}
         >
-            <div class="badge badge-lg badge-secondary badge-outline">Hint</div>
-        </div>
-        <div
-            class="collapse-content bg-primary-focus text-primary-content peer-checked:bg-primary-focus peer-checked:text-primary-content rounded-b-lg text-center"
-        >
-            This is what you should know about the correct script. Enlightening?
-        </div>
+          {lang.lang_name}
+        </button>
+      {/each}
     </div>
 
-    <!-- Set selected value and check it against right answer -->
-    <!-- Set selected value and check it against right answer -->
-    <!-- Set selected value and check it against right answer -->
-    <script>
-        // const radioLabels = document.querySelectorAll(".form-radio");
-        // const selectedScriptSpan = document.getElementById("selectedValue");
-        // // const validScriptId = ["1"];
-        // const resultStorage = document.getElementById("resultStorage");
-        // const counterDisplay = document.getElementById("counterDisplay");
-
-        // let selectedValue = "";
-        // let selectionCounter = 0;
-
-        // radioLabels.forEach((radio) => {
-        //     radio.addEventListener("change", () => {
-        //         if (radio.checked) {
-        //             const inputValue = radio.value;
-        //             console.log("Input Value:", inputValue);
-        //             console.log("rightNum:", rightNum);
-        //             if (parseInt(inputValue) === rightNum) {
-        //                 selectedValue = inputValue;
-        //                 selectedScriptSpan.textContent = "Right!";
-        //                 selectedScriptSpan.style.color = "green";
-        //                 resultStorage.textContent = `Stored Value: ${selectedValue}`;
-        //                 selectionCounter++;
-        //                 counterDisplay.textContent = `Selections: ${selectionCounter}`;
-        //             } else {
-        //                 selectedValue = "";
-        //                 selectedScriptSpan.textContent = "Wrong!";
-        //                 selectedScriptSpan.style.color = "red";
-        //                 resultStorage.textContent = "";
-        //                 counterDisplay.textContent = `Selections: ${selectionCounter}`;
-        //             }
-        //         }
-        //     });
-        // });
-    </script>
-</div>
+    {#if feedback}
+      <div class="mt-4">
+        {@html feedback}
+      </div>
+      <div>
+        <button
+          class="btn btn-outline"
+          on:click={() => newRound()}
+        >
+          Start next round now!
+        </button>
+      </div>
+    {/if}
+  </div>
+{/if}
