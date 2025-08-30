@@ -5,28 +5,7 @@ def initialize_database():
 	conn = sqlite3.connect('./database.db')
 	cursor = conn.cursor()
 
-	# Create a users table
-	cursor.execute('''
-		CREATE TABLE IF NOT EXISTS users (
-			id INTEGER PRIMARY KEY AUTOINCREMENT,
-			username TEXT NOT NULL UNIQUE,
-			email TEXT NOT NULL UNIQUE,
-			password TEXT NOT NULL,
-			points INTEGER NOT NULL
-		)
-	''')
-
-	# Create a revoked_tokens table
-	cursor.execute('''
-		CREATE TABLE IF NOT EXISTS revoked_tokens (
-			id INTEGER PRIMARY KEY AUTOINCREMENT,
-			token TEXT UNIQUE
-		)
-	''')
-
     # Create the languages database
-    # TODO: add condition to prevent subsequent creations
-    # causing error: duplicate values against the UNIQUE constraint
 	cursor.execute('''
 		CREATE TABLE IF NOT EXISTS languages (
 			num_id INTEGER PRIMARY KEY,
@@ -38,139 +17,31 @@ def initialize_database():
 		);
 	''')
 
+	# # Create a users table # LEGACY: dropped in this version
+	# cursor.execute('''
+	# 	CREATE TABLE IF NOT EXISTS users (
+	# 		id INTEGER PRIMARY KEY AUTOINCREMENT,
+	# 		username TEXT NOT NULL UNIQUE,
+	# 		email TEXT NOT NULL UNIQUE,
+	# 		password TEXT NOT NULL
+	# 	)
+	# ''')
+
+	# # Create a revoked_tokens table # LEGACY: dropped in this version
+	# cursor.execute('''
+	# 	CREATE TABLE IF NOT EXISTS revoked_tokens (
+	# 		id INTEGER PRIMARY KEY AUTOINCREMENT,
+	# 		token TEXT UNIQUE
+	# 	)
+	# ''')
+
 	conn.commit()
 	conn.close()
 
 	add_languages()
 
-# Functions for account management
-def revoke_refresh_token(refresh_token):
-	conn = sqlite3.connect('./database.db')
-	cursor = conn.cursor()
-
-	cursor.execute('''
-		INSERT INTO revoked_tokens (token) VALUES (?)
-	''', (refresh_token,))
-
-	conn.commit()
-	conn.close()
-
-def is_refresh_token_revoked(refresh_token):
-	conn = sqlite3.connect('./database.db')
-	cursor = conn.cursor()
-
-	cursor.execute('''
-		SELECT EXISTS (SELECT 1 FROM revoked_tokens WHERE token=?)
-	''', (refresh_token,))
-
-	result = cursor.fetchone()
-	conn.close()
-
-	return result[0] == 1
-
-def get_points(user_id: int):
-    
-	conn = sqlite3.connect("./database.db")
-	cursor = conn.cursor()
-	
-	cursor.execute('SELECT points FROM users WHERE id=?', (user_id,))
-	result = cursor.fetchone()	
- 
- 
-	conn.commit()
-	conn.close()
- 
-	return result[0]
-
-def add_points(id, points):
-	conn = sqlite3.connect("./database.db")
-	cursor = conn.cursor()
-	
-	cursor.execute('UPDATE users SET points=? WHERE id=?', (get_points(id) + points, id,))
-	
-	conn.commit()
-	conn.close()
-
-def register_user(username, email, password):
-	conn = sqlite3.connect('./database.db')
-	cursor = conn.cursor()
-
-	try:
-		# Hash the password
-		hashed_password = bcrypt.hash(password)
-
-		# Insert the user data into the database
-		cursor.execute('''
-			INSERT INTO users (username, email, password, points)
-			VALUES (?, ?, ?, 0)
-		''', (username, email, hashed_password))
-
-		conn.commit()
-		conn.close()
-	except sqlite3.IntegrityError as e:
-		conn.close()
-		error_message = str(e)
-
-		if 'UNIQUE constraint failed: users.username' in error_message:
-			return 'Username already in use.'
-		elif 'UNIQUE constraint failed: users.email' in error_message:
-			return 'Email already in use.'
-
-	return 'User registered successfully.'
-
-def verify_user(username, password):
-	conn = sqlite3.connect('./database.db')
-	cursor = conn.cursor()
-
-	# Retrieve the user data from the database
-	cursor.execute('''
-		SELECT id, username, password FROM users WHERE username=?
-	''', (username,))
-	user_data = cursor.fetchone()
-
-	if user_data:
-		user_id, _, hashed_password = user_data
-		if bcrypt.verify(password, hashed_password):
-			conn.close()
-			return user_id
-
-	conn.close()
-	return None
-
-def is_email_registered(email):
-	conn = sqlite3.connect('./database.db')
-	cursor = conn.cursor()
-
-	cursor.execute('SELECT id FROM users WHERE email=?', (email,))
-	user_id = cursor.fetchone()
-
-	conn.close()
-
-	return user_id is not None
-
-def get_user_id_by_email(email):
-	conn = sqlite3.connect('./database.db')
-	cursor = conn.cursor()
-
-	cursor.execute('SELECT id FROM users WHERE email=?', (email,))
-	user_id = cursor.fetchone()
-
-	conn.close()
-
-	return user_id[0] if user_id else None
-
-def update_user_password(user_id, new_password):
-	conn = sqlite3.connect('./database.db')
-	cursor = conn.cursor()
-
-	hashed_password = bcrypt.hash(new_password)
-
-	cursor.execute('UPDATE users SET password=? WHERE id=?', (hashed_password, user_id))
-
-	conn.commit()
-	conn.close()
-
 # Functions for game implementation
+
 def get_language_name(id: int):
 	conn = sqlite3.connect('./database.db')
 	cursor = conn.cursor()
@@ -231,7 +102,7 @@ def add_languages():
 				('004', 'ara', 'Afroasiatic', 'Arabic – Gulf Pidgin Arabic', 'udhr_ar-gpa', 'كلوا نفر في ولادة حر وسمسم في كرامة وسمسم في حقوق. الله في إعطى هو عقل وضمير، ولازم هو سوي مع تاني نفر سمسم أخ'),
 				('005', 'apc', 'Afroasiatic', 'Arabic – Lebanese', 'udhr_lebanese', 'Kill el ba¡ar byechlaqò aħrár w mütasévyín bil carámet w''el ħoqúq. W hinné nwahabò xaqel w đamír, w xleyun y''xémlò baxdon el baxed b''rúħ el ochuẅet.'),
 				('006', 'ara', 'Afroasiatic', 'Arabic – Modern Standard', 'udhr_ar', 'يولد جميع الناس أحراراً متساوين في الكرامة والحقوق. وقد وهبوا عقلاً وضميراً وعليهم ان يعامل بعضهم بعضاً بروح اﻹخاء.'),
-				('007', 'aeb', 'Afroasiatic', 'Arabic – Tunisian', 'udhr_ar-tunisia', 'In-nès il-kull muludìn ħurrìn w mitsèwìn fi’l-karàme w’il-ħuqùq. Tagħŧàw għqal w żamìr w lèzim ygħàmlu bgħażhum kìf l-axwa.'),
+				('007', 'aeb', 'Afroasiatic', 'Arabic – Tunisian', 'udhr_ar-tunisia', 'In-nès il-kull muludìn ħurrìn w mitsèwìn fi''l-karàme w''il-ħuqùq. Tagħŧàw għqal w żamìr w lèzim ygħàmlu bgħażhum kìf l-axwa.'),
 				('008', 'arc', 'Afroasiatic', 'Aramaic – Isaric dialect', 'udhr_aramaic', 'Yàlidïn ìnon čol-ènašëya čwaþ χeḁrrëya we šàwyëya va ǧurča we va zìdqëya. Bìyìzvədun yal χuešaba we yal þeḁrþa, we koyìsˀərun χàd ləwaþ χàd va ruχa di àχuþa.'),
 				('009', 'heb', 'Afroasiatic', 'Hebrew', 'udhr_hb', 'כֹּל בְּנֵי הָאָדָם נוֹלְדוּ בְּנֵי חוֹרִין וְשָׁוִים בְּעֶרְכָּם וּבִזְכֻיּוֹתֵיהֶם. כֻּלָּם חוֹנְנוּ בַּתְּבוּנָה וּבְמַצְפּוּן, לְפִיכָךְ חוֹבָה עֲלֵיהֶם לִנְהֹוג אִישׁ בְּרֵעֵהוּ בְּרוּחַ שֶׁל אַחֲוָה.'),
 				('010', 'mlt', 'Afroasiatic', 'Maltese', 'udhr_maltese', 'Il-bnedmin kollha jitwieldu ħielsa u ugwali fid-dinjità u d-drittijiet. Huma mogħnija bir-raġuni u bil-kuxjenza u għandhom inġibu ruħhom ma'' xulxin bi spirtu ta'' aħwa.'),
@@ -334,7 +205,7 @@ def add_languages():
 				('107', 'lmo', 'Indo-European – Romance', 'Lombard', 'udhr_lombard', 'Töcc i véser umà i nas líber e precís en dignità e diricc. I è dotacc de rizú e de coscenssa e i ga de comportà-s, de giü con l''óter, en spírit de fradelanssa.'),
 				('108', 'fra', 'Indo-European – Romance', 'Lorrain', 'udhr_lorrain', 'Totes li hàmmes v''nàt au monde libes et égaux de la dignitè et da lo drâ. Ils so dotès de rahho et d''conscience et so t''nus d''se compoutè li ines enwoués lis autes da in esprit d''fraternitè.'),
 				('109', 'oci', 'Indo-European – Romance', 'Occitan', 'udhr_occitan', 'Totas las personas nàisson liuras e parièras en dignitat e en dreches. Son cargadas de rason e de consciéncia e mai lor se cal comportar entre elas amb un eime de frairetat.'),
-				('110', 'pms', 'Indo-European – Romance', 'Piedmontese', 'udhr_piedmontese', 'Tùit j''esse uman a nasso lìber e uguaj an dignità e an drit. A son dotà ‘d sust e ‘d consiensa e a dëvo agì j’un con j’àutri ant n’ëspìrit ëd fradlansa.'),
+				('110', 'pms', 'Indo-European – Romance', 'Piedmontese', 'udhr_piedmontese', 'Tùit j''esse uman a nasso lìber e uguaj an dignità e an drit. A son dotà ‘d sust e ‘d consiensa e a dëvo agì j''un con j''àutri ant n''ëspìrit ëd fradlansa.'),
 				('111', 'por', 'Indo-European – Romance', 'Portuguese', 'udhr_pt', 'Todos os seres humanos nascem livres e iguais em dignidade e em direitos. Dotados de razão e de consciência, devem agir uns para com os outros em espírito de fraternidade.'),
 				('112', 'ron', 'Indo-European – Romance', 'Romanian', 'udhr_ro', 'Toate ființele umane se nasc libere și egale în demnitate și în drepturi. Ele sunt înzestrate cu rațiune și conștiință și trebuie să se comporte unele față de altele în spiritul fraternității.'),
 				('113', 'scn', 'Indo-European – Romance', 'Sicilian', 'udhr_sicilian', 'Tutti l''omini nascinu libbiri cu a stissa dignità i diritti. Iddi hannu a raggiuni i cuscienza i hannu a travagghiari ''nzemmula cu spiritu di fratirnità.'),
@@ -342,7 +213,7 @@ def add_languages():
 				('115', 'spa', 'Indo-European – Romance', 'Spanish – Mexico', 'udhr_es-mx', 'Todos los seres humanos nacen libres e iguales en dignidad y derechos y, dotados como están de razón y conciencia, deben comportarse fraternalmente los unos con los otros.'),
 				('116', 'spa', 'Indo-European – Romance', 'Spanish – Peru', 'udhr_es-peru', 'Todos los seres humanos nacen libres e iguales en dignidad y derechos y, dotados como están de razón y conciencia, deben comportarse fraternalmente los unos con los otros.'),
 				('117', 'spa', 'Indo-European – Romance', 'Spanish – Valencia', 'udhr_es', 'Todos los seres humanos nacen libres e iguales en dignidad y derechos y, dotados como están de razón y conciencia, deben comportarse fraternalmente los unos con los otros.'),
-				('118', 'cat', 'Indo-European – Romance', 'Valencian', 'udhr_valencian', 'Tots els éssers humans naixen lliures i iguals en dignitat i en drets i, dotats com estan de raó i de consciència, s’han de comportar fraternalment els uns amb els altres.'),
+				('118', 'cat', 'Indo-European – Romance', 'Valencian', 'udhr_valencian', 'Tots els éssers humans naixen lliures i iguals en dignitat i en drets i, dotats com estan de raó i de consciència, s''han de comportar fraternalment els uns amb els altres.'),
 				('119', 'wln', 'Indo-European – Romance', 'Walloon', 'udhr_walloon', 'Tos lès-omes vinèt-st-å monde lîbes, èt so-l''minme pîd po çou qu''ènn''èst d''leu dignité èt d''leus dreûts. I n''sont nin foû rêzon èt-z-ont-i leû consyince po zèls, çou qu''èlzès deût miner a s''kidûre onk'' po l''ôte tot come dès frés.'),
 				('120', 'bel', 'Indo-European – Slavic', 'Belarusian', 'udhr_be', 'Usie ludzi naradžajucca svabodnymi i roŭnymi ŭ svajoj hodnaści i pravach. Jany nadzieleny rozumam i sumleńniem i pavinny stavicca adzin da adnaho ŭ duchu bractva.'),
 				('121', 'bul', 'Indo-European – Slavic', 'Bulgarian', 'udhr_bg', 'Всички хора се раждат свободни и равни по достойнство и права. Tе са надарени с разум и съвест и следва да се отнасят помежду си в дух на братство.'),
@@ -375,7 +246,7 @@ def add_languages():
 				('148', 'tur', 'Turkic', 'Turkish', 'udhr_tr', 'Bütün insanlar hür, haysiyet ve haklar bakımından eşit doğarlar. Akıl ve vicdana sahiptirler ve birbirlerine karşı kardeşlik zihniyeti ile hareket etmelidirler. | بتون انسانلر حر، حيشيت و حقلر باقمڭدن اشت طوغرلر. عقل و وجدانه صحبترلر و بربرلرينه قارشو قرداشلق ذهنيت ايله حركت اتمهلودرلر.'),
 				('149', 'tuk', 'Turkic', 'Turkmen', 'udhr_turkmen', 'Хемме адамлар өз мертебеси ве хукуклары бюнча дең ягдайда дүнйә инйәрлер.Олара аң хем выждан берлендир ве олар бир-бирлери билен доганлык рухундакы гарайышда болмалыдырлар.'),
 				('150', 'uig', 'Turkic', 'Uyghur', 'udhr_uyghur', 'ﮬﻪﻣﻤﻪ ئادەم زاﻧﯩﺪﯨﻨﻼ ﺋﻪﺭﻛﯩﻦ، ﺋﯩﺰﺯﻩﺕ-ھۆرﻣﻪت ۋە ھوقۇقتا باپباراۋەر بولۇپ تۇغۇلغان. ئۇلار ﺋﻪﻗﯩﻠﮕﻪ ۋە ۋﯨﺠﺪﺍﻧﻐﺎ ﺋﯩﮕﻪ ﮬﻪﻣﺪﻩ ﺑﯩﺮ-ﺑﯩﺮﯨﮕﻪ ﻗﯧﺮﯨﻨﺪﺍﺷﻠﯩﻖ ﻣﯘﻧﺎﺳﯩﯟﯨﺘﯩﮕﻪ ﺧﺎﺱ ﺭﻭﮪ ﺑﯩﻠﻪﻥ ﻣﯘﺋﺎﻣﯩﻠﻪ ﻗﯩﻠﯩﺸﻰ ﻛﯧﺮەك.'),
-				('151', 'uzb', 'Turkic', 'Uzbek', 'udhr_uz', 'H̡əmmə adəm zatidinla ərkin, izzət-h̡ɵrmət wə hok̡uk̡ta babbarawər bolup tuƣulƣan. Ular ək̡ilƣə wə wijdanƣa igə h̡əmdə bir-birigə k̡erindaxlik̡ munasiwitigə hax roh bilən mu’amilə k̡ilixi kerək.'),
+				('151', 'uzb', 'Turkic', 'Uzbek', 'udhr_uz', 'H̡əmmə adəm zatidinla ərkin, izzət-h̡ɵrmət wə hok̡uk̡ta babbarawər bolup tuƣulƣan. Ular ək̡ilƣə wə wijdanƣa igə h̡əmdə bir-birigə k̡erindaxlik̡ munasiwitigə hax roh bilən mu''amilə k̡ilixi kerək.'),
 				('152', 'est', 'Uralic', 'Estonian', 'udhr_et', 'Kõik inimesed sünnivad vabadena ja võrdsetena oma väärikuselt ja õigustelt. Neile on antud mõistus ja südametunnistus ja nende suhtumist üksteisesse peab kandma vendluse vaim.'),
 				('153', 'fin', 'Uralic', 'Finnish', 'udhr2_fi', 'Kaikki ihmiset syntyvät vapaina ja tasavertaisina arvoltaan ja oikeuksiltaan. Heille on annettu järki ja omatunto, ja heidän on toimittava toisiaan kohtaan veljeyden hengessä.'),
 				('154', 'hun', 'Uralic', 'Hungarian', 'udhr_hu', 'Minden emberi lény szabadon születik és egyenlő méltósága és joga van. Az emberek, ésszel és lelkiismerettel bírván, egymással szemben testvéri szellemben kell hogy viseltessenek.'),
@@ -387,3 +258,109 @@ def add_languages():
 
 	conn.commit()
 	conn.close()
+
+# LEGACY: functionalities dropped in this version
+
+# # Functions for account management
+# def revoke_refresh_token(refresh_token):
+# 	conn = sqlite3.connect('./database.db')
+# 	cursor = conn.cursor()
+
+# 	cursor.execute('''
+# 		INSERT INTO revoked_tokens (token) VALUES (?)
+# 	''', (refresh_token,))
+
+# 	conn.commit()
+# 	conn.close()
+
+# def is_refresh_token_revoked(refresh_token):
+# 	conn = sqlite3.connect('./database.db')
+# 	cursor = conn.cursor()
+
+# 	cursor.execute('''
+# 		SELECT EXISTS (SELECT 1 FROM revoked_tokens WHERE token=?)
+# 	''', (refresh_token,))
+
+# 	result = cursor.fetchone()
+# 	conn.close()
+
+# 	return result[0] == 1
+
+# def register_user(username, email, password):
+# 	conn = sqlite3.connect('./database.db')
+# 	cursor = conn.cursor()
+
+# 	try:
+# 		# Hash the password
+# 		hashed_password = bcrypt.hash(password)
+
+# 		# Insert the user data into the database
+# 		cursor.execute('''
+# 			INSERT INTO users (username, email, password)
+# 			VALUES (?, ?, ?)
+# 		''', (username, email, hashed_password))
+
+# 		conn.commit()
+# 		conn.close()
+# 	except sqlite3.IntegrityError as e:
+# 		conn.close()
+# 		error_message = str(e)
+
+# 		if 'UNIQUE constraint failed: users.username' in error_message:
+# 			return 'Username already in use.'
+# 		elif 'UNIQUE constraint failed: users.email' in error_message:
+# 			return 'Email already in use.'
+
+# 	return 'User registered successfully.'
+
+# def verify_user(username, password):
+# 	conn = sqlite3.connect('./database.db')
+# 	cursor = conn.cursor()
+
+# 	# Retrieve the user data from the database
+# 	cursor.execute('''
+# 		SELECT id, username, password FROM users WHERE username=?
+# 	''', (username,))
+# 	user_data = cursor.fetchone()
+
+# 	if user_data:
+# 		user_id, _, hashed_password = user_data
+# 		if bcrypt.verify(password, hashed_password):
+# 			conn.close()
+# 			return user_id
+
+# 	conn.close()
+# 	return None
+
+# def is_email_registered(email):
+# 	conn = sqlite3.connect('./database.db')
+# 	cursor = conn.cursor()
+
+# 	cursor.execute('SELECT id FROM users WHERE email=?', (email,))
+# 	user_id = cursor.fetchone()
+
+# 	conn.close()
+
+# 	return user_id is not None
+
+# def get_user_id_by_email(email):
+# 	conn = sqlite3.connect('./database.db')
+# 	cursor = conn.cursor()
+
+# 	cursor.execute('SELECT id FROM users WHERE email=?', (email,))
+# 	user_id = cursor.fetchone()
+
+# 	conn.close()
+
+# 	return user_id[0] if user_id else None
+
+# def update_user_password(user_id, new_password):
+# 	conn = sqlite3.connect('./database.db')
+# 	cursor = conn.cursor()
+
+# 	hashed_password = bcrypt.hash(new_password)
+
+# 	cursor.execute('UPDATE users SET password=? WHERE id=?', (hashed_password, user_id))
+
+# 	conn.commit()
+# 	conn.close()

@@ -8,9 +8,9 @@ module.exports = {
     extend: {
       colors: {
         languages: {
-          "natural-ancient": "#EBC06D",
-          "natural-modern": "#89B4FA",
-          "conlang": "#E49B5D",
+          "natural-ancient": "#A855F7",
+          "natural-modern": "#A855F7",
+          "conlang": "#A855F7",
           "default": "#E0E0E0"
         }
       }

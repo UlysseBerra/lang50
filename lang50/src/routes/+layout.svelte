@@ -21,22 +21,20 @@
 
     <footer>
         <p>
+            Made in Paris with <span class="text-[#A855F7] text-xl">&#9825;</span>  
+            Optimized for larger screens <span class="text-[#A855F7] text-xl">&#10697;</span>  
             This is <a href="https://github.com/UlysseBerra/lang50"
                 ><code>lang50</code>
-            </a>
-            <a href="https://github.com/UlysseBerra/lang50">
                 <img
                     class="logo"
                     src={github}
                     alt="lang50 GitHub"
-                    width="25px"
-                /></a
-            >
+                    width="22px"
+                /></a>
         </p>
     </footer>
 </div>
 
-<!-- @TODO remove this CSS code and use Tailwind classes instead -->
 <style>
     .app {
         display: flex;
