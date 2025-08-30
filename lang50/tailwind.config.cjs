@@ -5,7 +5,16 @@ module.exports = {
     "./src/**/*.{html,svelte,js,ts}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        languages: {
+          "natural-ancient": "#A855F7",
+          "natural-modern": "#A855F7",
+          "conlang": "#A855F7",
+          "default": "#E0E0E0"
+        }
+      }
+    }
   },
   plugins: [require("@tailwindcss/typography"), require("daisyui")],
   daisyui: {
