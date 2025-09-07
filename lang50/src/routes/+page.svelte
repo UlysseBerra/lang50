@@ -50,6 +50,7 @@
         <a href="https://tailwindcss.com/">Tailwind</a> and
         <a href="https://daisyui.com/">daisyUI</a>;
         project logo created in <a href="https://cran.r-project.org/">R</a>.
+        Various Unix tools were used during the data acquisition and preparation phase.
         The files were edited mostly in <a href="https://vscodium.com/">VSCodium</a>,
         <a href="https://code.visualstudio.com/">Visual Studio Code</a>,
         and <a href="https://neovim.io/">Neovim</a>.
@@ -59,8 +60,9 @@
 
         If you are curious about our source for the recordings and the texts,
         please visit the legacy <a href="https://unicode.org/udhr/">UDHR in Unicode</a> website,
-        as well as the current form of this initiative, now hosted by the
-        <a href="https://www.ohchr.org/en/human-rights/universal-declaration/universal-declaration-human-rights/about-universal-declaration-human-rights-translation-project">United Nations</a>.
+        as well as the current form of this initiative hosted by the
+        <a href="https://www.ohchr.org/en/human-rights/universal-declaration/universal-declaration-human-rights/about-universal-declaration-human-rights-translation-project">United Nations</a>,
+        and the <a href="https://www.omniglot.com/">Omniglot</a> project.
 
         Details, data and code are available on the
         <a href="https://github.com/UlysseBerra/lang50">
